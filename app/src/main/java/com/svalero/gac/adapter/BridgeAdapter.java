@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,7 +19,7 @@ import java.util.List;
  * al extender de la clase RecyclerView los @Override los añadira automáticamente para el patron Holder, solo añadiremos nosotros el 5)
  *
  */
-public class BridgeAdapter extends RecyclerView.Adapter<BridgeAdapter.BrigeHolder> {
+public class BridgeAdapter extends RecyclerView.Adapter<BridgeAdapter.BrigdeHolder> {
 
     private Context context; // Es la activity en la que estamos
     private List<Brigde> bridgeList; //Lista de puentes para pintarlo en el RecyclerView
@@ -28,8 +29,8 @@ public class BridgeAdapter extends RecyclerView.Adapter<BridgeAdapter.BrigeHolde
      * @param dataList Lista de puentes que le pasamos
      */
     public BridgeAdapter(Context context, List<Brigde> dataList) {
-        this.context = context;
-        this.bridgeList = dataList;
+        this.context = context; //El contexto
+        this.bridgeList = dataList; //La lista de los puentes
     }
 
     /**
@@ -40,7 +41,7 @@ public class BridgeAdapter extends RecyclerView.Adapter<BridgeAdapter.BrigeHolde
      * @return
      */
     @Override
-    public BridgeAdapter.BrigeHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public BridgeAdapter.BrigdeHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         return null;
     }
@@ -52,14 +53,17 @@ public class BridgeAdapter extends RecyclerView.Adapter<BridgeAdapter.BrigeHolde
      * @param position
      */
     @Override
-    public void onBindViewHolder(@NonNull BridgeAdapter.BrigeHolder holder, int position) {
-
+    public void onBindViewHolder(BrigdeHolder holder, int position) {
 
     }
 
+    /**
+     * Metodo que estamos obligados a hacer para que devuelva el número de elementos y android pueda hacer sus calculos y pintar xtodo en base a esos calculos
+     * @return
+     */
     @Override
     public int getItemCount() {
-        return 0;
+        return  bridgeList.size(); //devolvemos el tamaño de la lista
     }
 
     /**
@@ -67,16 +71,27 @@ public class BridgeAdapter extends RecyclerView.Adapter<BridgeAdapter.BrigeHolde
      * Creamos todos los componentes que tenemos
      */
     public class BrigdeHolder extends RecyclerView.ViewHolder {
+        public TextView brigdeName;
+        public TextView brigdeCountry;
+        public TextView brigdeCity;
+        public TextView brigdeYearBuild;
+        public TextView brigdeLatitude; //Quitar cuanto tenga el point creado
+        public TextView brigdeLongitude; //Quitar cuanto tenga el point creado
+        public TextView brigdeNumerVain;
+        public TextView brigdeNumberStapes;
+        public TextView brigdePlatform;
+        public View parentView; //vista padre - como el recyclerView
 
+
+        /**
+         * 5) Consturctor del Holder
+         * @param view
+         */
+        public BrigdeHolder(View view) {
+            super(view); //Vista padre
+            parentView = view; //Guardamos el componente padre
+
+
+        }
     }
-
-    /**
-     * 5) Consturctor del Holder
-     * @param view
-     */
-    public BrigdeHolder(View view) {
-
-    }
-
-
 }

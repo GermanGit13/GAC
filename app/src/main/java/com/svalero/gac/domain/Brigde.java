@@ -10,9 +10,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity(tableName = "brigdes")
 public class Brigde {
 
@@ -44,8 +41,7 @@ public class Brigde {
 
     }
 
-    public Brigde(long brigde_id, String name, String country, String city, String yearBuild, double latitude, double longitude, int numberVain, int numberStapes, String platform) {
-        this.brigde_id = brigde_id;
+    public Brigde(String name, String country, String city, String yearBuild, double latitude, double longitude, int numberVain, int numberStapes, String platform) {
         this.name = name;
         this.country = country;
         this.city = city;

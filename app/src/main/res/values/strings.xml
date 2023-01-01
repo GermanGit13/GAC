@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GAC</string>
+    <string name="name_of_brigde">Nombre del Puente</string>
 </resources>

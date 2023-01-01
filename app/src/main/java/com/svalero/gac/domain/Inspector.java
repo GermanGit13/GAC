@@ -9,15 +9,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity(tableName = "inspectors") //Es una Entidad de la BBDD
 public class Inspector {
 
     @PrimaryKey(autoGenerate = true)
     @NonNull
-    private int inspector_id;
+    private long inspector_id;
 
     @ColumnInfo
     private String name;
@@ -35,8 +32,7 @@ public class Inspector {
 
     }
 
-    public Inspector(int inspector_id, String name, String surname, int numberLicense, String dni, String company) {
-        this.inspector_id = inspector_id;
+    public Inspector(String name, String surname, int numberLicense, String dni, String company) {
         this.name = name;
         this.surname = surname;
         this.numberLicense = numberLicense;
@@ -44,11 +40,11 @@ public class Inspector {
         this.company = company;
     }
 
-    public int getId() {
+    public long getId() {
         return inspector_id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.inspector_id = id;
     }
 

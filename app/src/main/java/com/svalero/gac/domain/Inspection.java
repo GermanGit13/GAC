@@ -11,9 +11,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity(tableName = "inspections")
 public class Inspection {
 
@@ -43,8 +40,7 @@ public class Inspection {
 
     }
 
-    public Inspection(long inspection_id, long inspectorCreatorId, long bridgeInspId, boolean vain, boolean stapes, int damage, boolean platform, boolean condition, String comment) {
-        this.inspection_id = inspection_id;
+    public Inspection(long inspectorCreatorId, long bridgeInspId, boolean vain, boolean stapes, int damage, boolean platform, boolean condition, String comment) {
         this.inspectorCreatorId = inspectorCreatorId;
         this.bridgeInspId = bridgeInspId;
         this.vain = vain;
