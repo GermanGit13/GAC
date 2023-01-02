@@ -14,19 +14,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-//@Entity(tableName = "brigdes",
-//        foreignKeys = @ForeignKey(entity = Inspector.class,
-//                parentColumns = "inspector_id",
-//                childColumns = "inspectorBrigdeId",
-//                onDelete = SET_NULL))
 @Entity(tableName = "bridges")
 public class Brigde {
 
     @PrimaryKey(autoGenerate = true)
     @NonNull
     private long brigde_id;
-//    @ColumnInfo
-//    private long inspectorCreatorId;
+
     @NonNull
     private String name;
     @ColumnInfo
@@ -46,12 +40,9 @@ public class Brigde {
     @ColumnInfo
     private String platform;
 
-//    @Embedded
-//    public Inspection inspection;
 
-    public Brigde(long brigde_id, /*long inspectorCreatorId,*/ String name, String country, String city, String yearBuild, double latitude, double longitude, int numberVain, int numberStapes, String platform) {
+    public Brigde(long brigde_id, String name, String country, String city, String yearBuild, double latitude, double longitude, int numberVain, int numberStapes, String platform) {
         this.brigde_id = brigde_id;
-//        this.inspectorCreatorId = inspectorCreatorId;
         this.name = name;
         this.country = country;
         this.city = city;
@@ -63,9 +54,8 @@ public class Brigde {
         this.platform = platform;
     }
 
-    public Brigde(/*long inspectorCreatorId,*/ String name, String country, String city, String yearBuild, double latitude, double longitude, int numberVain, int numberStapes, String platform) {
-//        this.brigde_id = brigde_id;
-//        this.inspectorCreatorId = inspectorCreatorId;
+    public Brigde(String name, String country, String city, String yearBuild, double latitude, double longitude, int numberVain, int numberStapes, String platform) {
+
         this.name = name;
         this.country = country;
         this.city = city;
