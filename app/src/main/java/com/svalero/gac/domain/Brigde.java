@@ -35,10 +35,10 @@ public class Brigde {
     private String city;
     @ColumnInfo
     private String yearBuild;
-//    @ColumnInfo
-//    private double latitude; //para poder ubicar en el mapa
-//    @ColumnInfo
-//    private double longitude; //para poder ubicar en el mapa
+    @ColumnInfo
+    private double latitude; //para poder ubicar en el mapa
+    @ColumnInfo
+    private double longitude; //para poder ubicar en el mapa
     @ColumnInfo
     private int numberVain;
     @ColumnInfo
@@ -49,29 +49,29 @@ public class Brigde {
 //    @Embedded
 //    public Inspection inspection;
 
-    public Brigde(long brigde_id, /*long inspectorCreatorId,*/ String name, String country, String city, String yearBuild, /*double latitude, double longitude,*/ int numberVain, int numberStapes, String platform) {
+    public Brigde(long brigde_id, /*long inspectorCreatorId,*/ String name, String country, String city, String yearBuild, double latitude, double longitude, int numberVain, int numberStapes, String platform) {
         this.brigde_id = brigde_id;
 //        this.inspectorCreatorId = inspectorCreatorId;
         this.name = name;
         this.country = country;
         this.city = city;
         this.yearBuild = yearBuild;
-//        this.latitude = latitude;
-//        this.longitude = longitude;
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.numberVain = numberVain;
         this.numberStapes = numberStapes;
         this.platform = platform;
     }
 
-    public Brigde(/*long inspectorCreatorId,*/ String name, String country, String city, String yearBuild, /*double latitude, double longitude,*/ int numberVain, int numberStapes, String platform) {
+    public Brigde(/*long inspectorCreatorId,*/ String name, String country, String city, String yearBuild, double latitude, double longitude, int numberVain, int numberStapes, String platform) {
 //        this.brigde_id = brigde_id;
 //        this.inspectorCreatorId = inspectorCreatorId;
         this.name = name;
         this.country = country;
         this.city = city;
         this.yearBuild = yearBuild;
-//        this.latitude = latitude;
-//        this.longitude = longitude;
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.numberVain = numberVain;
         this.numberStapes = numberStapes;
         this.platform = platform;
@@ -121,21 +121,21 @@ public class Brigde {
         this.yearBuild = yearBuild;
     }
 
-//    public double getLatitude() {
-//        return latitude;
-//    }
-//
-//    public void setLatitude(double latitude) {
-//        this.latitude = latitude;
-//    }
-//
-//    public double getLongitude() {
-//        return longitude;
-//    }
-//
-//    public void setLongitude(double longitude) {
-//        this.longitude = longitude;
-//    }
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
 
     public int getNumberVain() {
         return numberVain;
