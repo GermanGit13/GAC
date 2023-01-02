@@ -8,6 +8,7 @@
     tools:context=".RegisterBrigdeActivity">
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -45,22 +46,6 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Año Construcción"
-            android:inputType="textPersonName" />
-
-        <EditText
-            android:id="@+id/edit_text_latitude"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Latitud"
-            android:inputType="textPersonName" />
-
-        <EditText
-            android:id="@+id/edit_text_longuitud"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Longuitud"
             android:inputType="textPersonName" />
 
         <EditText
@@ -119,11 +104,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="goBackButon"
+            android:onClick="goBackButton"
             android:padding="5dp"
             android:text="Cancelar"
             app:icon="@android:drawable/ic_menu_set_as" />
 
     </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        tools:layout_editor_absoluteX="10dp">
+
+        <com.mapbox.maps.MapView
+            android:id="@+id/brigdeMap"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:mapbox_cameraTargetLat="40.7128"
+            app:mapbox_cameraTargetLng="-74.0060"
+            app:mapbox_cameraZoom="9.0" >
+        </com.mapbox.maps.MapView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

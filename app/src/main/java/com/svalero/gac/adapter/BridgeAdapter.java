@@ -41,7 +41,7 @@ public class BridgeAdapter extends RecyclerView.Adapter<BridgeAdapter.BrigdeHold
      * @return
      */
     @Override
-    public BridgeAdapter.BrigdeHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public BrigdeHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         return null;
     }
@@ -54,6 +54,7 @@ public class BridgeAdapter extends RecyclerView.Adapter<BridgeAdapter.BrigdeHold
      */
     @Override
     public void onBindViewHolder(BrigdeHolder holder, int position) {
+
 
     }
 

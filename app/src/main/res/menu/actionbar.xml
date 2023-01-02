@@ -7,4 +7,9 @@
         android:icon="@android:drawable/ic_menu_add"
         android:title="Añadir Puente"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/view_map"
+        android:icon="@android:drawable/ic_dialog_map"
+        android:title="Ver Mapa"
+        app:showAsAction="always" />
 </menu>

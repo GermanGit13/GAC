@@ -22,7 +22,7 @@ public interface BrigdeDao {
     /**
      * Para realizar una Query de todos los Puentes
     */
-    @Query(value = "SELECT * FROM brigdes")
+    @Query(value = "SELECT * FROM bridges")
     List<Brigde> getAll();
 
     /**
@@ -30,19 +30,19 @@ public interface BrigdeDao {
      * @param name buscar por campo nombre
      * @return
      */
-    @Query(value = "SELECT * FROM brigdes WHERE name = :name")
+    @Query(value = "SELECT * FROM bridges WHERE name = :name")
     Brigde getByName(String name);
 
     /**
      * Para realizar una Query de todos los Puentes por ciudad
      */
-    @Query(value = "SELECT * FROM brigdes WHERE city = :city")
+    @Query(value = "SELECT * FROM bridges WHERE city = :city")
     List<Brigde> getAllCity(String city);
 
     /**
      * Para realizar una Query de todos los Puentes por id
      */
-    @Query(value = "SELECT * FROM brigdes WHERE brigde_id = :brigde_id")
+    @Query(value = "SELECT * FROM bridges WHERE brigde_id = :brigde_id")
     Brigde getById(long brigde_id);
 
     /**
