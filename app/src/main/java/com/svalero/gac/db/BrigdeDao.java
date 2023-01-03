@@ -51,7 +51,7 @@ public interface BrigdeDao {
      * Brigde Solo insertar un objeto
      */
     @Insert
-    void insert (Brigde... brigde);
+    void insert (Brigde brigde);
 
     /**
      * Para borrar en la BBDD

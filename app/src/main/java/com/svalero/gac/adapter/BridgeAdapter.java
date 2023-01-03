@@ -54,8 +54,13 @@ public class BridgeAdapter extends RecyclerView.Adapter<BridgeAdapter.BrigdeHold
      */
     @Override
     public void onBindViewHolder(BrigdeHolder holder, int position) {
-
-
+        holder.brigdeName.setText(bridgeList.get(position).getName());
+        holder.brigdeCountry.setText(bridgeList.get(position).getYearBuild());
+        holder.brigdeCity.setText(bridgeList.get(position).getCity());
+        holder.brigdeYearBuild.setText(bridgeList.get(position).getYearBuild());
+        holder.brigdeNumerVain.setText(bridgeList.get(position).getYearBuild());
+        holder.brigdeNumberStapes.setText(bridgeList.get(position).getNumberStapes());
+        holder.brigdePlatform.setText(bridgeList.get(position).getPlatform());
     }
 
     /**
@@ -76,8 +81,8 @@ public class BridgeAdapter extends RecyclerView.Adapter<BridgeAdapter.BrigdeHold
         public TextView brigdeCountry;
         public TextView brigdeCity;
         public TextView brigdeYearBuild;
-        public TextView brigdeLatitude; //Quitar cuanto tenga el point creado
-        public TextView brigdeLongitude; //Quitar cuanto tenga el point creado
+//        public TextView brigdeLatitude; //Quitar cuanto tenga el point creado
+//        public TextView brigdeLongitude; //Quitar cuanto tenga el point creado
         public TextView brigdeNumerVain;
         public TextView brigdeNumberStapes;
         public TextView brigdePlatform;

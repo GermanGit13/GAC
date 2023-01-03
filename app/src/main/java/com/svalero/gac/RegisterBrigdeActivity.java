@@ -2,12 +2,16 @@ package com.svalero.gac;
 
 import static com.svalero.gac.db.Constants.DATABASE_NAME;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteConstraintException;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -55,7 +59,7 @@ public class RegisterBrigdeActivity extends AppCompatActivity {
      * Metodo que llama el boton add_brigde_button que tiene definido en onclick saveButtonBrigde en el layout activity_register_brigde.xml
      * @param view
      */
-    public void saveButtonBrigde(View view){
+    public void saveButton(View view){
         EditText etName = findViewById(R.id.edit_text_name); //recogemos los datos de las cajas de texto del layout
         EditText etCountry = findViewById(R.id.edit_text_country);
         EditText etCity = findViewById(R.id.edit_text_city);
@@ -68,8 +72,8 @@ public class RegisterBrigdeActivity extends AppCompatActivity {
         String country = etCountry.getText().toString();
         String city = etCity.getText().toString();
         String yearBuild = etYearBuild.getText().toString();
-        int numberVain = Integer.parseInt(etNumberVain.getText().toString());
-        int numberStapes = Integer.parseInt(etNumberStapes.getText().toString());
+        String numberVain = etNumberVain.getText().toString();
+        String numberStapes = etNumberStapes.getText().toString();
         String platform = etPlatform.getText().toString();
 
         //If por si acaso el point no está creado, el usuario no ha selecionado nada en el mapa, asi no da error al crear la tarea porque falte latitude y longuitude
@@ -127,7 +131,7 @@ public class RegisterBrigdeActivity extends AppCompatActivity {
     private void addMarker(Point point) {
         PointAnnotationOptions pointAnnotationOptions = new PointAnnotationOptions()
                 .withPoint(point)
-                .withIconImage(BitmapFactory.decodeResource(getResources(), R.drawable.red_marker)); //le pasamos el dibujo que queremos que pinte como icono, los podemos crea webinar 4 min 54
+                .withIconImage(BitmapFactory.decodeResource(getResources(), R.mipmap.red_marker)); //le pasamos el dibujo que queremos que pinte como icono, los podemos crea webinar 4 min 54
         pointAnnotationManager.create(pointAnnotationOptions);
     }
 
@@ -136,5 +140,37 @@ public class RegisterBrigdeActivity extends AppCompatActivity {
      */
     private void removeAllMarkers() {
         pointAnnotationManager.deleteAll(); // Se Podria borra uno en concreto pasandole el point exacto
+    }
+
+    /**
+     * PAra crear el menu (el actionBar)
+     * @param menu
+     * @return
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.actionbar, menu); //Inflamos el menu
+        return true;
+    }
+
+    /**
+     * Para cuando elegimos una opcion del menu
+     * @param item
+     * @return
+     */
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.register_build) { //Evaluar a que opcion hemos pichado
+            Intent intent = new Intent(this, RegisterBrigdeActivity.class); //donde nos manda al pinchar sobre el boton + en el action bar
+            startActivity(intent);
+            return true;
+        }
+        else if (item.getItemId() == R.id.view_map) { //Para cuando pulsan en la boton del mapa en el actionbar
+            Intent intent = new Intent(this, MapsActivity.class); //donde nos manda al pinchar sobre el boton mapas en el action bar
+            startActivity(intent);
+            return true;
+        }
+
+        return false;
     }
 }

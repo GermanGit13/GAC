@@ -34,14 +34,14 @@ public class Brigde {
     @ColumnInfo
     private double longitude; //para poder ubicar en el mapa
     @ColumnInfo
-    private int numberVain;
+    private String numberVain;
     @ColumnInfo
-    private int numberStapes;
+    private String numberStapes;
     @ColumnInfo
     private String platform;
 
 
-    public Brigde(long brigde_id, String name, String country, String city, String yearBuild, double latitude, double longitude, int numberVain, int numberStapes, String platform) {
+    public Brigde(long brigde_id, String name, String country, String city, String yearBuild, double latitude, double longitude, String  numberVain, String numberStapes, String platform) {
         this.brigde_id = brigde_id;
         this.name = name;
         this.country = country;
@@ -54,7 +54,7 @@ public class Brigde {
         this.platform = platform;
     }
 
-    public Brigde(String name, String country, String city, String yearBuild, double latitude, double longitude, int numberVain, int numberStapes, String platform) {
+    public Brigde(String name, String country, String city, String yearBuild, double latitude, double longitude, String numberVain, String numberStapes, String platform) {
 
         this.name = name;
         this.country = country;
@@ -127,19 +127,19 @@ public class Brigde {
         this.longitude = longitude;
     }
 
-    public int getNumberVain() {
+    public String  getNumberVain() {
         return numberVain;
     }
 
-    public void setNumberVain(int numberVain) {
+    public void setNumberVain(String numberVain) {
         this.numberVain = numberVain;
     }
 
-    public int getNumberStapes() {
+    public String getNumberStapes() {
         return numberStapes;
     }
 
-    public void setNumberStapes(int numberStapes) {
+    public void setNumberStapes(String numberStapes) {
         this.numberStapes = numberStapes;
     }
 
