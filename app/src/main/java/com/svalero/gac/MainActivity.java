@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 import com.svalero.gac.adapter.BridgeAdapter;
 import com.svalero.gac.domain.Brigde;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     private List<Brigde> brigdeList; //Lista de puentes para obtener los todos los puentes de la BBDD
     private BridgeAdapter adapter; //Para poder conectar con la BBDD
+    Button listBrigde; // Creamos el objeto button que esta en mainactivity
 
     /**
      * Método onCreate: mínimo obligatorio, primer método que una activity arranca por primera vez.
@@ -36,6 +38,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         brigdeList = new ArrayList<>(); //Instanciamos la lista a vacio la seguimos usando como referencia pero la llenamos con la BBDD
+
+        listBrigde = findViewById(R.id.list_brigde_main_button);
+        listBrigde.setOnClickListener(view -> {
+            Intent intent = new Intent(this, BridgeAllActivity.class); //donde nos manda al pinchar sobre el boton mapas en el action bar
+            startActivity(intent);
+        });
 
 //        /**
 //         * Pauta generales para trabajar con recyclerView. Para que se ajuste al layout y nos haga caso
