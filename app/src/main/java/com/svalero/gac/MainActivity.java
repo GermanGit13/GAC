@@ -1,12 +1,7 @@
 package com.svalero.gac;
 
-import static com.svalero.gac.db.Constants.DATABASE_NAME;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,7 +9,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.svalero.gac.adapter.BridgeAdapter;
-import com.svalero.gac.db.AppDatabase;
 import com.svalero.gac.domain.Brigde;
 
 import java.util.ArrayList;
@@ -105,6 +99,10 @@ public class MainActivity extends AppCompatActivity {
         }
         else if (item.getItemId() == R.id.view_map) { //Para cuando pulsan en la boton del mapa en el actionbar
             Intent intent = new Intent(this, MapsActivity.class); //donde nos manda al pinchar sobre el boton mapas en el action bar
+            startActivity(intent);
+            return true;
+        } else if (item.getItemId() == R.id.brigde_list) {
+            Intent intent    = new Intent(this, BridgeAllActivity.class);
             startActivity(intent);
             return true;
         }
