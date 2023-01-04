@@ -62,7 +62,7 @@ public class BrigdeModifyActivity extends AppCompatActivity {
 
         GesturesPlugin gesturesPlugin = GesturesUtils.getGestures(brigdeMapModify);
         gesturesPlugin.addOnMapClickListener(point -> { //Cuando hacemos click en el mapa devolvemos un point
-//            removeAllMarkers(); //Método creado para borrar los anteriores antes de seleccionar alguna para no tener problemas con los point
+            removeAllMarkers(); //Método creado para borrar los anteriores antes de seleccionar alguna para no tener problemas con los point
             this.point = point; //Ese point lo guardamos para tener la longuitud y latitude
             addMarker(point);
             return true;
