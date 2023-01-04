@@ -10,6 +10,7 @@ import androidx.room.Room;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import com.svalero.gac.adapter.BridgeAdapter;
@@ -66,6 +67,17 @@ public class BridgeAllActivity extends AppCompatActivity {
             brigdeList.clear(); //Vaciamos la taskList por si tuviera algo
             brigdeList.addAll(db.brigdeDao().getAll()); //Añadimos xtodo lo que la BBDD nos devuelve
             adapter.notifyDataSetChanged(); //Para que actualice desde la BBDD
+    }
+
+    /**
+     * PAra crear el menu (el actionBar)
+     * @param menu
+     * @return
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.actionbar, menu); //Inflamos el menu
+        return true;
     }
 
      /**

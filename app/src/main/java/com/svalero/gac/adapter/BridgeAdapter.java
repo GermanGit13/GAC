@@ -4,6 +4,7 @@ import static com.svalero.gac.db.Constants.DATABASE_NAME;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
+import com.svalero.gac.BrigdeDetailsActivity;
 import com.svalero.gac.R;
 import com.svalero.gac.db.AppDatabase;
 import com.svalero.gac.domain.Brigde;
@@ -127,6 +129,11 @@ public class BridgeAdapter extends RecyclerView.Adapter<BridgeAdapter.BrigdeHold
          * Métodos de los botones del layout que se pinta en el recyclerView
          */
         private void detailsBrigdeButton(int position) {
+            Brigde brigde = bridgeList.get(position); //recuperamos el puente por su posicion
+
+            Intent intent = new Intent(context, BrigdeDetailsActivity.class); //Lo pasamos al activity para pintar el detalle de la tarea
+            intent.putExtra("brigde_id", brigde.getBrigde_id()); //Recogemos el id
+            context.startActivity(intent); //lanzamos el intent que nos lleva al layout correspondiente
 
         }
 
