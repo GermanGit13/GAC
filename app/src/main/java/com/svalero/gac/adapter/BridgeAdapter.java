@@ -173,8 +173,10 @@ public class BridgeAdapter extends RecyclerView.Adapter<BridgeAdapter.BrigdeHold
             dialog.show();//Importante para que se muestre
         }
 
+        //TODO Pendiente
         private void mapBrigdeButton (int position) {
 
         }
+
     }
 }
