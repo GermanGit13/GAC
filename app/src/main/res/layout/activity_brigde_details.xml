@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerInParent="false"
+    android:layout_centerHorizontal="false"
+    android:layout_margin="10dp"
+    tools:context=".BrigdeDetailsActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#03A9F4"
+            android:padding="5dp"
+            android:text="Name:" />
+
+        <TextView
+            android:id="@+id/tv_brigde_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
+
+        <TextView
+            android:id="@+id/country"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#03A9F4"
+            android:padding="5dp"
+            android:text="Pais:" />
+
+        <TextView
+            android:id="@+id/tv_brigde_country"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
+
+        <TextView
+            android:id="@+id/city"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#03A9F4"
+            android:padding="5dp"
+            android:text="Ciudad:" />
+
+        <TextView
+            android:id="@+id/tv_brigde_city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout8">
+
+        <TextView
+            android:id="@+id/year"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#03A9F4"
+            android:padding="5dp"
+            android:text="Año Construcción:" />
+
+        <TextView
+            android:id="@+id/tv_brigde_yearBuild"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout9">
+
+        <TextView
+            android:id="@+id/vain"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#03A9F4"
+            android:padding="5dp"
+            android:text="Número Vanos:" />
+
+        <TextView
+            android:id="@+id/tv_brigde_numbervain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout10">
+
+        <TextView
+            android:id="@+id/stapes"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#03A9F4"
+            android:padding="5dp"
+            android:text="Estribos:" />
+
+        <TextView
+            android:id="@+id/tv_brigde_numberstapes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+
+        <TextView
+            android:id="@+id/platform"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#03A9F4"
+            android:padding="5dp"
+            android:text="Plataforma:" />
+
+        <TextView
+            android:id="@+id/tv_brigde_platform"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_delete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_margin="10dp"
+            android:clickable="true"
+            android:layoutDirection="ltr"
+            app:backgroundTint="#F40F0F"
+            app:srcCompat="@drawable/ic_delete_forever" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_modify"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_margin="10dp"
+            android:clickable="true"
+            app:srcCompat="@drawable/ic_baseline_edit_24" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
