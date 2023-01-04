@@ -32,6 +32,7 @@ public class BridgeAdapter extends RecyclerView.Adapter<BridgeAdapter.BrigdeHold
 
     private Context context; // Es la activity en la que estamos
     private List<Brigde> bridgeList; //Lista de puentes para pintarlo en el RecyclerView
+    private Brigde brigde;
 
     /**
      * 1) Constructor que creamos para pasarle los datos que queremos que pinte
@@ -42,6 +43,12 @@ public class BridgeAdapter extends RecyclerView.Adapter<BridgeAdapter.BrigdeHold
         this.context = context; //El contexto
         this.bridgeList = dataList; //La lista de los puentes
     }
+
+//    public BridgeAdapter(Context context, Brigde brigde) {
+//        this.context = context; //El contexto
+//        this.brigde = brigde;
+//    }
+
 
     /**
      * Metodo con el que Android va a inflar, va a crear cada estructura del layout donde irán los datos de cada puente.
@@ -110,15 +117,15 @@ public class BridgeAdapter extends RecyclerView.Adapter<BridgeAdapter.BrigdeHold
             brigdeCountry = view.findViewById(R.id.brigde_country);
             brigdeYearBuild = view.findViewById(R.id.bridgde_year);
             detailsBrigdeButton = view.findViewById(R.id.details_brigde_button);
-            modifyBrigdeButton = view.findViewById(R.id.modify_brigde_button);
+//            modifyBrigdeButton = view.findViewById(R.id.modify_brigde_button); //De momento en está vista no voy a modificar
             deleteBrigdeButton = view.findViewById(R.id.delete_brigde_button);
             mapBrigdeButton = view.findViewById(R.id.map_brigde_button);
 
             //Para decirle que hace el boton cuando pulsamos sobre el
             // Ver detalles de un puente
             detailsBrigdeButton.setOnClickListener(v -> detailsBrigdeButton(getAdapterPosition())); //al pulsar lo llevamos al método detailsBrigdeButton
-            // Modificar un puente
-            modifyBrigdeButton.setOnClickListener(v -> modifyBrigdeButton(getAdapterPosition()));
+//            // Modificar un puente
+//            modifyBrigdeButton.setOnClickListener(v -> modifyBrigdeButton(getAdapterPosition()));
             // Eliminar un puente
             deleteBrigdeButton.setOnClickListener(v -> deleteBrigdeButton(getAdapterPosition()));
             //Ver en el mapa el puente
@@ -137,9 +144,13 @@ public class BridgeAdapter extends RecyclerView.Adapter<BridgeAdapter.BrigdeHold
 
         }
 
-        private void modifyBrigdeButton(int position) {
-
-        }
+        /**
+         * De momento modificamos desde la vista general
+         * @param position
+         */
+//        private void modifyBrigdeButton(int position) {
+//
+//        }
 
         private void deleteBrigdeButton(int position) {
             /**

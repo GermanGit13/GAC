@@ -38,17 +38,6 @@
             app:icon="?android:attr/actionModeFindDrawable" />
 
         <Button
-            android:id="@+id/modify_brigde_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:padding="5dp"
-            android:text="Modificar"
-            android:textSize="12sp"
-            app:icon="@android:drawable/ic_menu_edit" />
-
-        <Button
             android:id="@+id/delete_brigde_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

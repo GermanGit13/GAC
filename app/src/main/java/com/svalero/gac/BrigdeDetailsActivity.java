@@ -2,23 +2,24 @@ package com.svalero.gac;
 
 import static com.svalero.gac.db.Constants.DATABASE_NAME;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.svalero.gac.adapter.BridgeAdapter;
 import com.svalero.gac.db.AppDatabase;
 import com.svalero.gac.domain.Brigde;
 
+import java.util.concurrent.atomic.AtomicReference;
+
 public class BrigdeDetailsActivity extends AppCompatActivity {
+
+    private BridgeAdapter adapter; //Para poder conectar con la BBDD
 
     FloatingActionButton fabDelete; //Para borrar desde la vista detalle
     FloatingActionButton fabModify; //Para modificar desde la vista detalle
@@ -29,10 +30,10 @@ public class BrigdeDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_brigde_details);
 
         fabDelete = findViewById(R.id.fab_delete);
-//        fabModify = findViewById(R.id.fab_modify);
+        fabModify = findViewById(R.id.fab_modify);
 
 
-        Intent intent = getIntent();
+        AtomicReference<Intent> intent = new AtomicReference<>(getIntent());
         //Recuperar el puente por el id
         long brigde_id = getIntent().getLongExtra("brigde_id", 0);
 //        long brigde_id = Long.parseLong(intent.getStringExtra("brideg_id"));
@@ -59,7 +60,29 @@ public class BrigdeDetailsActivity extends AppCompatActivity {
                         dbD.brigdeDao().delete(brigde);
                         brigdeList();
 
-//                        dbD.brigdeDao().delete(brigde); //Borramos de la BBDD
+                    })
+                    .setNegativeButton("No", (dialog, id) -> dialog.dismiss()); //Botones del dialogo que salta
+            AlertDialog dialog = builder.create();
+            dialog.show();//Importante para que se muestre
+        }));
+
+        //Método onClick para borrar
+        fabModify.setOnClickListener((view -> {
+            /**
+             * Dialogo para pregunta antes de si quiere modificar -> https://developer.android.com/guide/topics/ui/dialogs?hl=es-419
+             */
+            AlertDialog.Builder builder = new AlertDialog.Builder(this); //le pasamos el contexto donde estamos
+            builder.setMessage("¿Seguro que quieres modificar")
+                    .setTitle("Modificar Puente")
+                    .setPositiveButton("Si", (dialog, id) -> { //Añadimos los botones
+                        final AppDatabase dbD = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME) //Instanciamos la BBDD -< PAsamos el contexto para saber donde estamos
+                                .allowMainThreadQueries().build();
+//                        Brigde brigde = bridgeList.get(position); //recuperamos el puente por su posicion
+
+                        intent.set(new Intent(this, BrigdeModifyActivity.class)); //Lo pasamos al activity para pintar el detalle de la tarea
+                        intent.get().putExtra("brigde_id", brigde.getBrigde_id()); //Recogemos el id
+                        this.startActivity(intent.get()); //lanzamos el intent que nos lleva al layout correspondiente
+
                     })
                     .setNegativeButton("No", (dialog, id) -> dialog.dismiss()); //Botones del dialogo que salta
             AlertDialog dialog = builder.create();

@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.snackbar.BaseTransientBottomBar;
@@ -31,22 +32,32 @@ import com.mapbox.maps.plugin.gestures.GesturesUtils;
 import com.svalero.gac.db.AppDatabase;
 import com.svalero.gac.domain.Brigde;
 
-public class RegisterBrigdeActivity extends AppCompatActivity {
+public class BrigdeModifyActivity extends AppCompatActivity {
 
-    private MapView brigdeMap; //Porque en el layout de registrar Brigde tenemos un mapa
+    private MapView brigdeMapModify; //Porque en el layout de registrar Brigde tenemos un mapa
     private Point point; //Guardamos el point para gestionar la latitu y longuitud
     private PointAnnotationManager pointAnnotationManager; //Para anotar el point así es común para todos
+    private long brigdeId; //Para guardarnos el id de Brigde a modificar
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_brigde);
+        setContentView(R.layout.activity_brigde_modify);
 
-        brigdeMap = findViewById(R.id.brigdeMap); //le pasamos el mapa creado en el layout activity_register_brigde y lo metemos en el constrait de abajo
+        brigdeMapModify = findViewById(R.id.brigdeMapModify); //le pasamos el mapa creado en el layout activity_register_brigde y lo metemos en el constrait de abajo
 
-        GesturesPlugin gesturesPlugin = GesturesUtils.getGestures(brigdeMap);
+        Intent intent = new Intent(getIntent());
+        brigdeId = getIntent().getLongExtra("brigde_id", 0); //guardamos el id que nos traemos de la vista detalle
+
+        //Instanciamos la BBDD
+        final AppDatabase db = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME)
+                .allowMainThreadQueries().build();
+        Brigde brigde = db.brigdeDao().getById(brigdeId); //creamos el puente por su id
+        fillData(brigde); //rellenamos los datos con el método
+
+        GesturesPlugin gesturesPlugin = GesturesUtils.getGestures(brigdeMapModify);
         gesturesPlugin.addOnMapClickListener(point -> { //Cuando hacemos click en el mapa devolvemos un point
-            removeAllMarkers(); //Método creado para borrar los anteriores antes de seleccionar alguna para no tener problemas con los point
+//            removeAllMarkers(); //Método creado para borrar los anteriores antes de seleccionar alguna para no tener problemas con los point
             this.point = point; //Ese point lo guardamos para tener la longuitud y latitude
             addMarker(point);
             return true;
@@ -56,17 +67,17 @@ public class RegisterBrigdeActivity extends AppCompatActivity {
     }
 
     /**
-     * Metodo que llama el boton add_brigde_button que tiene definido en onclick saveButtonBrigde en el layout activity_register_brigde.xml
+     * Metodo que llama el boton modify_save_brigde_button que tiene definido en onclick modifyButton en el layout activity_brigde_modify.xml
      * @param view
      */
-    public void saveButton(View view){
-        EditText etName = findViewById(R.id.edit_text_name); //recogemos los datos de las cajas de texto del layout
-        EditText etCountry = findViewById(R.id.edit_text_country);
-        EditText etCity = findViewById(R.id.edit_text_city);
-        EditText etYearBuild = findViewById(R.id.edit_text_yearbuild);
-        EditText etNumberVain = findViewById(R.id.edit_text_numbervain);
-        EditText etNumberStapes = findViewById(R.id.edit_text_numberstapes);
-        EditText etPlatform = findViewById(R.id.edit_text_platform);
+    public void modifyButton(View view){
+        EditText etName = findViewById(R.id.modify_text_name); //recogemos los datos de las cajas de texto del layout
+        EditText etCountry = findViewById(R.id.modify_text_country);
+        EditText etCity = findViewById(R.id.modify_text_city);
+        EditText etYearBuild = findViewById(R.id.modify_text_yearbuild);
+        EditText etNumberVain = findViewById(R.id.modify_text_numbervain);
+        EditText etNumberStapes = findViewById(R.id.modify_text_numberstapes);
+        EditText etPlatform = findViewById(R.id.modify_text_platform);
 
         String name = etName.getText().toString(); //Pasamos la cajas de texto a un String
         String country = etCountry.getText().toString();
@@ -78,18 +89,18 @@ public class RegisterBrigdeActivity extends AppCompatActivity {
 
         //If por si acaso el point no está creado, el usuario no ha selecionado nada en el mapa, asi no da error al crear la tarea porque falte latitude y longuitude
         if (point == null) {
-              Toast.makeText(this, R.string.select_location_message, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.select_location_message, Toast.LENGTH_LONG).show();
 //            Snackbar.make(etName, R.string.select_location_message, BaseTransientBottomBar.LENGTH_LONG); //etName porque el Snackbar hay que asociarlo algún componente del layout
             return;
         }
 
-        Brigde brigde = new Brigde(name, country, city, yearBuild, point.latitude(), point.longitude(), numberVain, numberStapes, platform); //Creamos un puente con los datos, recogemos de point los datos con el clik del usuario sobre el map
+        Brigde brigde = new Brigde(brigdeId,name, country, city, yearBuild, point.latitude(), point.longitude(), numberVain, numberStapes, platform); //Creamos un puente con los datos, recogemos de point los datos con el clik del usuario sobre el map
         final AppDatabase db = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME) //Instanciamos la BBDD, la creamos cada vez que necesitemos meter algo en BBDD
                 .allowMainThreadQueries().build();
-        //Controlamos que la tarea no esta ya creada en su campo primary key, controlando la excepcion
 
+        //Controlamos que la tarea no esta ya creada en su campo primary key, controlando la excepcion
         try {
-            db.brigdeDao().insert(brigde); // Insertamos el objeto dentro de la BBDD
+            db.brigdeDao().update(brigde); // Modificamos el objeto dentro de la BBDD
 
             Snackbar.make(etName, R.string.register_brigde, BaseTransientBottomBar.LENGTH_LONG); //etName porque el Snackbar hay que asociarlo algún componente del layout
             etName.setText(""); //Para vaciar las cajas de texto y prepararlas para registrar otra tarea
@@ -103,14 +114,41 @@ public class RegisterBrigdeActivity extends AppCompatActivity {
         } catch (SQLiteConstraintException sce) {
             Snackbar.make(etName, "Ha ocurrido un error. Comprueba que el dato es válido", BaseTransientBottomBar.LENGTH_LONG);
         }
+    }
 
+    /**
+     * Metodoque llama el boton back_button que tiene definido en onclick goBackButtonModify en el layout activity_brigde_modify.xml
+     * @param view
+     * onBackPressed(); VOlver atras
+     */
+    public void goBackButtonModify(View view) {
+        onBackPressed(); //Volver atrás
+    }
+
+
+    private void fillData(Brigde brigde) {
+        EditText etName = findViewById(R.id.modify_text_name);
+        EditText etCountry = findViewById(R.id.modify_text_country);
+        EditText etCity = findViewById(R.id.modify_text_city);
+        EditText etYear = findViewById(R.id.modify_text_yearbuild);
+        EditText etNumberVain = findViewById(R.id.modify_text_numbervain);
+        EditText etNumberStapes = findViewById(R.id.modify_text_numberstapes);
+        EditText etPlatform = findViewById(R.id.modify_text_platform);
+
+        etName.setText(brigde.getName());
+        etCountry.setText(brigde.getCountry());
+        etCity.setText(brigde.getCity());
+        etYear.setText(brigde.getYearBuild());
+        etNumberVain.setText(brigde.getNumberVain());
+        etNumberStapes.setText(brigde.getNumberStapes());
+        etPlatform.setText(brigde.getPlatform());
     }
 
     /**
      * Para inicializar el Pointmanager y asi la podemos dejar inicializada nada más arracar en onCreate
      */
     private void initializePointManager() {
-        AnnotationPlugin annotationPlugin = AnnotationPluginImplKt.getAnnotations(brigdeMap);
+        AnnotationPlugin annotationPlugin = AnnotationPluginImplKt.getAnnotations(brigdeMapModify);
         AnnotationConfig annotationConfig = new AnnotationConfig();
         pointAnnotationManager = PointAnnotationManagerKt.createPointAnnotationManager(annotationPlugin, annotationConfig);
     }
