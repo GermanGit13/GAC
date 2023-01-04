@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.database.sqlite.SQLiteConstraintException;
 import android.graphics.BitmapFactory;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.mapbox.geojson.Point;
+import com.mapbox.maps.CameraOptions;
 import com.mapbox.maps.MapView;
 import com.mapbox.maps.plugin.annotation.AnnotationConfig;
 import com.mapbox.maps.plugin.annotation.AnnotationPlugin;
@@ -54,6 +56,9 @@ public class BrigdeModifyActivity extends AppCompatActivity {
                 .allowMainThreadQueries().build();
         Brigde brigde = db.brigdeDao().getById(brigdeId); //creamos el puente por su id
         fillData(brigde); //rellenamos los datos con el método
+
+//        addMarker(Point.fromLngLat(brigde.getLongitude(), brigde.getLatitude())); //le pasamos el metodo que crea el marker y ponemos el point y nombre del puente
+        setCameraPosition(Point.fromLngLat(brigde.getLongitude(), brigde.getLatitude())); //Fijamos la camara del mapa en el puente a modificar
 
         GesturesPlugin gesturesPlugin = GesturesUtils.getGestures(brigdeMapModify);
         gesturesPlugin.addOnMapClickListener(point -> { //Cuando hacemos click en el mapa devolvemos un point
@@ -100,17 +105,24 @@ public class BrigdeModifyActivity extends AppCompatActivity {
 
         //Controlamos que la tarea no esta ya creada en su campo primary key, controlando la excepcion
         try {
-            db.brigdeDao().update(brigde); // Modificamos el objeto dentro de la BBDD
 
-            Snackbar.make(etName, R.string.register_brigde, BaseTransientBottomBar.LENGTH_LONG); //etName porque el Snackbar hay que asociarlo algún componente del layout
-            etName.setText(""); //Para vaciar las cajas de texto y prepararlas para registrar otra tarea
-            etCountry.setText("");
-            etCity.setText("");
-            etYearBuild.setText("");
-            etNumberVain.setText("");
-            etNumberStapes.setText("");
-            etPlatform.setText("");
-            etName.requestFocus(); //recuperamos el foco
+            AlertDialog.Builder builder = new AlertDialog.Builder(this); //le pasamos el contexto donde estamos
+            builder.setMessage("¿Seguro que quieres modificar")
+                    .setTitle("Modificar Puente")
+                    .setPositiveButton("Si", (dialog, id) -> { //Añadimos los botones
+                        final AppDatabase dbD = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME) //Instanciamos la BBDD -< PAsamos el contexto para saber donde estamos
+                                .allowMainThreadQueries().build();
+
+                        db.brigdeDao().update(brigde); // Modificamos el objeto dentro de la BBDD
+
+                        Intent intent = new Intent(this, BrigdeDetailsActivity.class); //Lo devuelvo al details del puente
+                        intent.putExtra("brigde_id", brigde.getBrigde_id());
+                        this.startActivity(intent); //lanzamos el intent que nos lleva al layout correspondiente
+                    })
+                    .setNegativeButton("No", (dialog, id) -> dialog.dismiss()); //Botones del dialogo que salta
+            AlertDialog dialog = builder.create();
+            dialog.show();//Importante para que se muestre
+
         } catch (SQLiteConstraintException sce) {
             Snackbar.make(etName, "Ha ocurrido un error. Comprueba que el dato es válido", BaseTransientBottomBar.LENGTH_LONG);
         }
@@ -175,6 +187,19 @@ public class BrigdeModifyActivity extends AppCompatActivity {
     }
 
     /**
+     * Para poder crear un marker y que lo pinte por cada puente
+     * @param point Pasamos el point
+     * @param title el nombre del puente
+     */
+    private void addMarker(Point point, String title) {
+        PointAnnotationOptions pointAnnotationOptions = new PointAnnotationOptions()
+                .withPoint(point)
+                .withTextField(title) //asi aparece el nombre en el mapa
+                .withIconImage(BitmapFactory.decodeResource(getResources(), R.mipmap.red_marker));
+        pointAnnotationManager.create(pointAnnotationOptions);
+    }
+
+    /**
      * Para borrar el marker anterior y no aparezcan todos en el mapa
      */
     private void removeAllMarkers() {
@@ -211,5 +236,19 @@ public class BrigdeModifyActivity extends AppCompatActivity {
         }
 
         return false;
+    }
+
+    /**
+     * Fija la camara del mapa donde nosotros queramos, asi el mapa arranca desde ese punto
+     * @param point
+     */
+    private void setCameraPosition(Point point) {
+        CameraOptions cameraPosition = new CameraOptions.Builder()
+                .center(point)
+                .pitch(0.0)
+                .zoom(13.5)
+                .bearing(-17.6)
+                .build();
+        brigdeMapModify.getMapboxMap().setCamera(cameraPosition);
     }
 }

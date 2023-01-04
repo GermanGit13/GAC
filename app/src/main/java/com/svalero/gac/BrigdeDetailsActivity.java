@@ -66,7 +66,7 @@ public class BrigdeDetailsActivity extends AppCompatActivity {
             dialog.show();//Importante para que se muestre
         }));
 
-        //Método onClick para borrar
+        //Método onClick para modificar
         fabModify.setOnClickListener((view -> {
             /**
              * Dialogo para pregunta antes de si quiere modificar -> https://developer.android.com/guide/topics/ui/dialogs?hl=es-419
