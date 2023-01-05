@@ -4,6 +4,7 @@ import androidx.room.Database;
 import androidx.room.RoomDatabase;
 
 import com.svalero.gac.domain.Brigde;
+import com.svalero.gac.domain.Inspection;
 import com.svalero.gac.domain.Inspector;
 
 /**
@@ -16,10 +17,10 @@ import com.svalero.gac.domain.Inspector;
  *     annotationProcessor "androidx.room:room-runtime:2.4.3"
  * Por cada Tabla que tengamos necesitamos un Dao
  */
-@Database(entities = {Brigde.class, Inspector.class}, version = 1)
+@Database(entities = {Brigde.class, Inspector.class, Inspection.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
 
     public abstract BrigdeDao brigdeDao();
     public abstract InspectorDao inspectorDao();
-
+    public abstract InspectionDao inspectionDao();
 }
