@@ -24,6 +24,10 @@ public class MainActivity extends AppCompatActivity {
     private List<Brigde> brigdeList; //Lista de puentes para obtener los todos los puentes de la BBDD
     private BridgeAdapter adapter; //Para poder conectar con la BBDD
     Button listBrigde; // Creamos el objeto button que esta en mainactivity
+    Button addBrige;
+    Button listInspector;
+    Button addInspector;
+
 
     /**
      * Método onCreate: mínimo obligatorio, primer método que una activity arranca por primera vez.
@@ -42,6 +46,24 @@ public class MainActivity extends AppCompatActivity {
         listBrigde = findViewById(R.id.list_brigde_main_button);
         listBrigde.setOnClickListener(view -> {
             Intent intent = new Intent(this, BridgeAllActivity.class); //donde nos manda al pinchar sobre el boton mapas en el action bar
+            startActivity(intent);
+        });
+
+        addBrige = findViewById(R.id.add_brigde_main_button);
+        addBrige.setOnClickListener(view -> {
+            Intent intent = new Intent(this, RegisterBrigdeActivity.class); //donde nos manda al pinchar sobre el boton mapas en el action bar
+            startActivity(intent);
+        });
+
+        listInspector = findViewById(R.id.list_inspector_main_button);
+        listInspector.setOnClickListener(view -> {
+            Intent intent = new Intent(this, InspectorAllActivity.class); //donde nos manda al pinchar sobre el boton mapas en el action bar
+            startActivity(intent);
+        });
+
+        addInspector = findViewById(R.id.add_inspector_main_button);
+        addInspector.setOnClickListener(view -> {
+            Intent intent = new Intent(this, InspectorRegisterActivity.class); //donde nos manda al pinchar sobre el boton mapas en el action bar
             startActivity(intent);
         });
 
@@ -109,8 +131,8 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, MapsActivity.class); //donde nos manda al pinchar sobre el boton mapas en el action bar
             startActivity(intent);
             return true;
-        } else if (item.getItemId() == R.id.brigde_list) {
-            Intent intent    = new Intent(this, BridgeAllActivity.class);
+        } else if (item.getItemId() == R.id.register_inspector) {
+            Intent intent    = new Intent(this, InspectorRegisterActivity.class);
             startActivity(intent);
             return true;
         }

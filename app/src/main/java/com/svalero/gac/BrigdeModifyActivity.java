@@ -75,14 +75,14 @@ public class BrigdeModifyActivity extends AppCompatActivity {
      * Metodo que llama el boton modify_save_brigde_button que tiene definido en onclick modifyButton en el layout activity_brigde_modify.xml
      * @param view
      */
-    public void modifyButton(View view){
-        EditText etName = findViewById(R.id.modify_text_name); //recogemos los datos de las cajas de texto del layout
-        EditText etCountry = findViewById(R.id.modify_text_country);
-        EditText etCity = findViewById(R.id.modify_text_city);
-        EditText etYearBuild = findViewById(R.id.modify_text_yearbuild);
-        EditText etNumberVain = findViewById(R.id.modify_text_numbervain);
-        EditText etNumberStapes = findViewById(R.id.modify_text_numberstapes);
-        EditText etPlatform = findViewById(R.id.modify_text_platform);
+    public void modifyButtonBrigde(View view){
+        EditText etName = findViewById(R.id.brige_modify_text_name); //recogemos los datos de las cajas de texto del layout
+        EditText etCountry = findViewById(R.id.brige_modify_text_country);
+        EditText etCity = findViewById(R.id.brige_modify_text_city);
+        EditText etYearBuild = findViewById(R.id.brige_modify_text_yearbuild);
+        EditText etNumberVain = findViewById(R.id.brige_modify_text_numbervain);
+        EditText etNumberStapes = findViewById(R.id.brige_modify_text_numberstapes);
+        EditText etPlatform = findViewById(R.id.brige_modify_text_platform);
 
         String name = etName.getText().toString(); //Pasamos la cajas de texto a un String
         String country = etCountry.getText().toString();
@@ -139,13 +139,13 @@ public class BrigdeModifyActivity extends AppCompatActivity {
 
 
     private void fillData(Brigde brigde) {
-        EditText etName = findViewById(R.id.modify_text_name);
-        EditText etCountry = findViewById(R.id.modify_text_country);
-        EditText etCity = findViewById(R.id.modify_text_city);
-        EditText etYear = findViewById(R.id.modify_text_yearbuild);
-        EditText etNumberVain = findViewById(R.id.modify_text_numbervain);
-        EditText etNumberStapes = findViewById(R.id.modify_text_numberstapes);
-        EditText etPlatform = findViewById(R.id.modify_text_platform);
+        EditText etName = findViewById(R.id.brige_modify_text_name);
+        EditText etCountry = findViewById(R.id.brige_modify_text_country);
+        EditText etCity = findViewById(R.id.brige_modify_text_city);
+        EditText etYear = findViewById(R.id.brige_modify_text_yearbuild);
+        EditText etNumberVain = findViewById(R.id.brige_modify_text_numbervain);
+        EditText etNumberStapes = findViewById(R.id.brige_modify_text_numberstapes);
+        EditText etPlatform = findViewById(R.id.brige_modify_text_platform);
 
         etName.setText(brigde.getName());
         etCountry.setText(brigde.getCountry());

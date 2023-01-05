@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BrigdeModifyActivity">
+    tools:context=".InspectorModifyActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/brige_modify_text_name"
+            android:id="@+id/ed_inspector_modify_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -24,52 +24,42 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/brige_modify_text_country"
+            android:id="@+id/ed_inspector_modify_surname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Pais"
-            android:inputType="textPersonName" />
+            android:hint="Apellidos"
+            android:inputType="textPersonName"
+            android:minHeight="48dp" />
 
         <EditText
-            android:id="@+id/brige_modify_text_city"
+            android:id="@+id/ed_inspector_modify_license"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Ciudad"
-            android:inputType="textPersonName" />
+            android:hint="Número de licencia"
+            android:inputType="textPersonName"
+            android:minHeight="48dp" />
 
         <EditText
-            android:id="@+id/brige_modify_text_yearbuild"
+            android:id="@+id/ed_inspector_modify_dni"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Año Construcción"
-            android:inputType="textPersonName" />
+            android:hint="DNI"
+            android:inputType="textPersonName"
+            android:minHeight="48dp" />
 
         <EditText
-            android:id="@+id/brige_modify_text_numbervain"
+            android:id="@+id/ed_inspector_modify_company"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Número de Vanos"
-            android:inputType="textPersonName" />
+            android:hint="Compañia"
+            android:inputType="textPersonName"
+            android:minHeight="48dp" />
 
-        <EditText
-            android:id="@+id/brige_modify_text_numberstapes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Número Estribos"
-            android:inputType="textPersonName" />
 
-        <EditText
-            android:id="@+id/brige_modify_text_platform"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Plataforma"
-            android:inputType="textPersonName" />
 
     </LinearLayout>
 
@@ -84,11 +74,11 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/modify_save_brigde_button"
+            android:id="@+id/modify_save_inspector_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="modifyButtonBrigde"
+            android:onClick="modifyButtonInspector"
             android:padding="5dp"
             android:text="Guardar"
             app:icon="@android:drawable/ic_menu_save" />
@@ -98,29 +88,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="goBackButtonModify"
+            android:onClick="goBackButtonModifyInspector"
             android:padding="5dp"
             android:text="Cancelar"
             app:icon="@android:drawable/ic_menu_set_as" />
 
     </LinearLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        tools:layout_editor_absoluteX="10dp">
-
-        <com.mapbox.maps.MapView
-            android:id="@+id/brigdeMapModify"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:mapbox_cameraTargetLat="40.7128"
-            app:mapbox_cameraTargetLng="-74.0060"
-            app:mapbox_cameraZoom="9.0" >
-        </com.mapbox.maps.MapView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
