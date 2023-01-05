@@ -66,26 +66,26 @@ public class InspectorDetailsActivity extends AppCompatActivity {
         }));
 
         //Método onClick para modificar
-//        fabModify.setOnClickListener((view -> {
-//            /**
-//             * Dialogo para pregunta antes de si quiere modificar -> https://developer.android.com/guide/topics/ui/dialogs?hl=es-419
-//             */
-//            AlertDialog.Builder builder = new AlertDialog.Builder(this); //le pasamos el contexto donde estamos
-//            builder.setMessage("¿Seguro que quieres modificar")
-//                    .setTitle("Modificar Puente")
-//                    .setPositiveButton("Si", (dialog, id) -> { //Añadimos los botones
-//                        final AppDatabase dbD = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME) //Instanciamos la BBDD -< PAsamos el contexto para saber donde estamos
-//                                .allowMainThreadQueries().build();
-//
-//                        intent.set(new Intent(this, InspectorModifyActivity.class)); //Lo pasamos al activity para pintar el detalle de la tarea
-//                        intent.get().putExtra("inspector_id", inspector.getInspector_id()); //Recogemos el id
-//                        this.startActivity(intent.get()); //lanzamos el intent que nos lleva al layout correspondiente
-//
-//                    })
-//                    .setNegativeButton("No", (dialog, id) -> dialog.dismiss()); //Botones del dialogo que salta
-//            AlertDialog dialog = builder.create();
-//            dialog.show();//Importante para que se muestre
-//        }));
+        fabModify.setOnClickListener((view -> {
+            /**
+             * Dialogo para pregunta antes de si quiere modificar -> https://developer.android.com/guide/topics/ui/dialogs?hl=es-419
+             */
+            AlertDialog.Builder builder = new AlertDialog.Builder(this); //le pasamos el contexto donde estamos
+            builder.setMessage("¿Seguro que quieres modificar")
+                    .setTitle("Modificar Inspector")
+                    .setPositiveButton("Si", (dialog, id) -> { //Añadimos los botones
+                        final AppDatabase dbD = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME) //Instanciamos la BBDD -< PAsamos el contexto para saber donde estamos
+                                .allowMainThreadQueries().build();
+
+                        intent.set(new Intent(this, InspectorModifyActivity.class)); //Lo pasamos al activity para pintar el detalle de la tarea
+                        intent.get().putExtra("inspector_id", inspector.getInspector_id()); //Recogemos el id
+                        this.startActivity(intent.get()); //lanzamos el intent que nos lleva al layout correspondiente
+
+                    })
+                    .setNegativeButton("No", (dialog, id) -> dialog.dismiss()); //Botones del dialogo que salta
+            AlertDialog dialog = builder.create();
+            dialog.show();//Importante para que se muestre
+        }));
     }
 
     private void fillData(Inspector inspector) {
