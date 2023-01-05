@@ -35,7 +35,7 @@ public class BridgeAllActivity extends AppCompatActivity {
         /**
          * Pauta generales para trabajar con recyclerView. Para que se ajuste al layout y nos haga caso
          */
-        RecyclerView recyclerView = findViewById(R.id.brigde_list); //Nos hacemos con el RecyclerView que en el layout activity_main.xml le hemos llamado brigde_list
+        RecyclerView recyclerView = findViewById(R.id.rc_brigde_all); //Nos hacemos con el RecyclerView que en el layout activity_main.xml le hemos llamado brigde_list
         recyclerView.setHasFixedSize(true); //para decirle que tiene un tamaño fijo y ocupe xtodo lo que tiene asigando
         LinearLayoutManager layoutManager = new LinearLayoutManager(this); //Para decirle al activity que lo va a gestionar un layoutManager
         recyclerView.setLayoutManager(layoutManager); // para que el reciclerView se ciña al layoutManager

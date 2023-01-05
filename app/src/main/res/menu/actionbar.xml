@@ -3,13 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/brigde_list"
-        android:icon="?android:attr/actionModeFindDrawable"
-        android:title="Listado Puentes"
+        android:id="@+id/register_inspector"
+        android:icon="@drawable/inspector"
+        android:title="Añadir Inspector"
         app:showAsAction="always" />
     <item
         android:id="@+id/register_build"
-        android:icon="@android:drawable/ic_menu_add"
+        android:icon="@drawable/puente"
         android:title="Añadir Puente"
         app:showAsAction="always" />
     <item

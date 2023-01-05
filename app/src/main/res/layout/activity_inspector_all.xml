@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BridgeAllActivity">
+    tools:context=".InspectorAllActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rc_brigde_all"
+        android:id="@+id/rc_inspector_all"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:scrollbars="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
