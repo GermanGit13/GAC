@@ -17,7 +17,6 @@ public class Inspector {
     @ColumnInfo
     private String surname;
     @ColumnInfo
-    @NonNull
     private String numberLicense;
     @ColumnInfo
     private String dni;

@@ -9,27 +9,15 @@ import androidx.room.Room;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.database.sqlite.SQLiteConstraintException;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
-import com.mapbox.geojson.Point;
-import com.mapbox.maps.CameraOptions;
-import com.mapbox.maps.plugin.annotation.AnnotationConfig;
-import com.mapbox.maps.plugin.annotation.AnnotationPlugin;
-import com.mapbox.maps.plugin.annotation.AnnotationPluginImplKt;
-import com.mapbox.maps.plugin.annotation.generated.PointAnnotationManagerKt;
-import com.mapbox.maps.plugin.annotation.generated.PointAnnotationOptions;
-import com.mapbox.maps.plugin.gestures.GesturesPlugin;
-import com.mapbox.maps.plugin.gestures.GesturesUtils;
 import com.svalero.gac.db.AppDatabase;
-import com.svalero.gac.domain.Brigde;
 import com.svalero.gac.domain.Inspector;
 
 public class InspectorModifyActivity extends AppCompatActivity {
@@ -39,8 +27,7 @@ public class InspectorModifyActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_brigde_modify);
-
+        setContentView(R.layout.activity_inspector_modify);
 
         Intent intent = new Intent(getIntent());
         inspectorId = getIntent().getLongExtra("inspector_id", 0); //guardamos el id que nos traemos de la vista detalle
@@ -57,15 +44,15 @@ public class InspectorModifyActivity extends AppCompatActivity {
      * @param view
      */
     public void modifyButtonInspector(View view){
-        EditText etName = findViewById(R.id.inspector_modify_text_name); //recogemos los datos de las cajas de texto del layout
-        EditText etSurname = findViewById(R.id.inspector_modify_text_surname);
-        EditText etNumerLicense = findViewById(R.id.inspector_modify_text_number_license);
-        EditText etDni = findViewById(R.id.inspector_modify_text_dni);
-        EditText etCompany = findViewById(R.id.inspector_modify_text_company);
+        EditText etName = findViewById(R.id.ed_inspector_modify_name); //recogemos los datos de las cajas de texto del layout
+        EditText etSurname = findViewById(R.id.ed_inspector_modify_surname);
+        EditText etNumberLicense = findViewById(R.id.ed_inspector_modify_license);
+        EditText etDni = findViewById(R.id.ed_inspector_modify_dni);
+        EditText etCompany = findViewById(R.id.ed_inspector_modify_company);
 
         String name = etName.getText().toString(); //Pasamos la cajas de texto a un String
         String surname = etSurname.getText().toString();
-        String numberLicense = etNumerLicense.getText().toString();
+        String numberLicense = etNumberLicense.getText().toString();
         String dni = etDni.getText().toString();
         String company = etCompany.getText().toString();
 
@@ -75,7 +62,6 @@ public class InspectorModifyActivity extends AppCompatActivity {
 
         //Controlamos que la tarea no esta ya creada en su campo primary key, controlando la excepcion
         try {
-
             AlertDialog.Builder builder = new AlertDialog.Builder(this); //le pasamos el contexto donde estamos
             builder.setMessage("¿Seguro que quieres modificar")
                     .setTitle("Modificar Inspector")
@@ -103,22 +89,23 @@ public class InspectorModifyActivity extends AppCompatActivity {
      * @param view
      * onBackPressed(); VOlver atras
      */
-    public void goBackButtonModify(View view) {
+    public void goBackButtonModifyInspector(View view) {
         onBackPressed(); //Volver atrás
     }
 
     private void fillData(Inspector inspector) {
-        EditText etName = findViewById(R.id.inspector_modify_text_name);
-        EditText etSurname = findViewById(R.id.inspector_modify_text_surname);
-        EditText etNumberLicense = findViewById(R.id.inspector_modify_text_number_license);
-        EditText etDni = findViewById(R.id.inspector_modify_text_dni);
-        EditText etCompany = findViewById(R.id.inspector_modify_text_company);
+        EditText etName = findViewById(R.id.ed_inspector_modify_name);
+        EditText etSurname = findViewById(R.id.ed_inspector_modify_surname);
+        EditText etNumberLicense = findViewById(R.id.ed_inspector_modify_license);
+        EditText etDni = findViewById(R.id.ed_inspector_modify_dni);
+        EditText etCompany = findViewById(R.id.ed_inspector_modify_company);
 
         etName.setText(inspector.getName());
         etSurname.setText(inspector.getSurname());
         etNumberLicense.setText(inspector.getNumberLicense());
         etDni.setText(inspector.getDni());
         etCompany.setText(inspector.getCompany());
+
     }
 
     /**

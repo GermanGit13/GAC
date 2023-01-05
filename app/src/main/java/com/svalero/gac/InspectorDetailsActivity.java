@@ -37,12 +37,12 @@ public class InspectorDetailsActivity extends AppCompatActivity {
 
         AtomicReference<Intent> intent = new AtomicReference<>(getIntent()); //Porque tenemos dos distintos botones que nos lleva a dos zonas distintas
         //Recuperar el inspector por el id
-        long inpector_id = getIntent().getLongExtra("inspector_id", 0);
+        long inspector_id = getIntent().getLongExtra("inspector_id", 0);
 
         //Instanciamos la BBDD
         final AppDatabase db = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME)
                 .allowMainThreadQueries().build();
-        Inspector inspector = db.inspectorDao().getById(inpector_id); //creamos el inspector por su id
+        Inspector inspector = db.inspectorDao().getById(inspector_id); //creamos el inspector por su id
         fillData(inspector); //Rellenamos los campos con el método creado
 
         //Método onClick para borrar
@@ -57,7 +57,7 @@ public class InspectorDetailsActivity extends AppCompatActivity {
                         final AppDatabase dbD = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME) //Instanciamos la BBDD -< PAsamos el contexto para saber donde estamos
                                 .allowMainThreadQueries().build();
                         dbD.inspectorDao().delete(inspector);
-                        inpectorList(); // Volvemos a la activity InspectorAllActivity despues de borrar
+                        inspectorList(); // Volvemos a la activity InspectorAllActivity despues de borrar
 
                     })
                     .setNegativeButton("No", (dialog, id) -> dialog.dismiss()); //Botones del dialogo que salta
@@ -89,11 +89,11 @@ public class InspectorDetailsActivity extends AppCompatActivity {
     }
 
     private void fillData(Inspector inspector) {
-        TextView tvName = findViewById(R.id.tv_inspector_name);
-        TextView tvSurname = findViewById(R.id.tv_inspector_surname);
-        TextView tvNumberLicense = findViewById(R.id.tv_inspector_number_license);
-        TextView tvDni = findViewById(R.id.tv_inspector_dni);
-        TextView tvCompany = findViewById(R.id.tv_inspector_company);
+        TextView tvName = findViewById(R.id.tv_inspector_name_modify);
+        TextView tvSurname = findViewById(R.id.tv_inspector_surname_modify);
+        TextView tvNumberLicense = findViewById(R.id.tv_inspector_number_license_modify);
+        TextView tvDni = findViewById(R.id.tv_inspector_dni_modify);
+        TextView tvCompany = findViewById(R.id.tv_inspector_company_modify);
 
         tvName.setText(inspector.getName());
         tvSurname.setText(inspector.getSurname());
@@ -105,7 +105,7 @@ public class InspectorDetailsActivity extends AppCompatActivity {
     /**
      * Para volver al listado de inspectores despues de borrar desde la vista de detall
      */
-    private void inpectorList () {
+    private void inspectorList () {
         Intent intent = new Intent(this, InspectorAllActivity.class); //Desde la vista que estamos a la vista que queremos ir
         startActivity(intent); //iniciamos el intent
     }

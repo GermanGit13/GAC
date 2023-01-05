@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/inspector_modify_text_name"
+            android:id="@+id/ed_inspector_modify_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -24,36 +24,40 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/inspector_modify_text_surname"
+            android:id="@+id/ed_inspector_modify_surname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Apellidos"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:minHeight="48dp" />
 
         <EditText
-            android:id="@+id/inspector_modify_text_number_license"
+            android:id="@+id/ed_inspector_modify_license"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Número de licencia"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:minHeight="48dp" />
 
         <EditText
-            android:id="@+id/inspector_modify_text_dni"
+            android:id="@+id/ed_inspector_modify_dni"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="DNI"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:minHeight="48dp" />
 
         <EditText
-            android:id="@+id/inspector_modify_text_company"
+            android:id="@+id/ed_inspector_modify_company"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Compañia"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:minHeight="48dp" />
 
 
 

@@ -76,7 +76,7 @@ public class BrigdeModifyActivity extends AppCompatActivity {
      * @param view
      */
     public void modifyButtonBrigde(View view){
-        EditText etName = findViewById(R.id.inspector_modify_text_name); //recogemos los datos de las cajas de texto del layout
+        EditText etName = findViewById(R.id.brige_modify_text_name); //recogemos los datos de las cajas de texto del layout
         EditText etCountry = findViewById(R.id.brige_modify_text_country);
         EditText etCity = findViewById(R.id.brige_modify_text_city);
         EditText etYearBuild = findViewById(R.id.brige_modify_text_yearbuild);
