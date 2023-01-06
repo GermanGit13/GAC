@@ -57,13 +57,13 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/map_brigde_button"
+            android:id="@+id/inspection_brigde_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="5dp"
-            android:text="Ver en Mapa"
-            app:icon="@android:drawable/ic_dialog_map" />
+            android:text="Registrar una Inspección"
+            app:icon="@drawable/inspection" />
     </LinearLayout>
 
 </LinearLayout>

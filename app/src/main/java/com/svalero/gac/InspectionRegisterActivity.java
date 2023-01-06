@@ -15,8 +15,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 
+import com.svalero.gac.adapter.BridgeAdapter;
 import com.svalero.gac.db.AppDatabase;
+import com.svalero.gac.domain.Brigde;
 import com.svalero.gac.domain.Inspection;
 
 public class InspectionRegisterActivity extends AppCompatActivity {
@@ -24,11 +27,24 @@ public class InspectionRegisterActivity extends AppCompatActivity {
     private long inspectionId; //Para guardarnos el id de Inspection
     private long brigdeId; //Para guardarnos el id de Brigde a asociar a la inspeccion
     private long inspectorId; //Para guardarnos el id de Inspector a asociar a la inspeccion
+    private Brigde brigde; //para tener el puente a mano
+    private BridgeAdapter adapterBrigde; //Para poder conectar con la BBDD
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inspection_register);
+
+        Intent intent = new Intent(getIntent());
+        brigdeId = getIntent().getLongExtra("brigde_id", 0); //guardamos el id que nos traemos de la vista detalle
+
+        //Instanciamos la BBDD
+        final AppDatabase db = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME)
+                .allowMainThreadQueries().build();
+        brigde = db.brigdeDao().getById(brigdeId); //creamos el puente por su id
+
+        TextView tvName = findViewById(R.id.tv_brige_id_add_inspection);
+        tvName.setText(brigde.getName());
     }
 
     /**
@@ -36,8 +52,9 @@ public class InspectionRegisterActivity extends AppCompatActivity {
      * @param view
      */
     public void saveButtonInspection(View view){
+
         //recogemos los datos de las cajas de texto del layout
-        EditText etBrigdeId = findViewById(R.id.et_inspection_brigde_id); //Clave Primaria de Brigde
+
         EditText etInspectionId = findViewById(R.id.et_inspection_inspector_id); //Clave Primaria de Inspector
         CheckBox cbVain = (CheckBox) findViewById(R.id.cb_checkBox_vain);
         CheckBox cbStape = (CheckBox) findViewById(R.id.cb_checkBox_stapes);
@@ -46,23 +63,22 @@ public class InspectionRegisterActivity extends AppCompatActivity {
         CheckBox cbCondition = (CheckBox) findViewById(R.id.cb_checkBox_condition);
         EditText etComment = findViewById(R.id.et_inspection_comment);
 
-        long brigdeId = convertToLong(etBrigdeId.getText().toString());
-        long inspectorId = convertToLong(etInspectionId.getText().toString());
+        String inspectorIdString = etInspectionId.getText().toString();
+        long inspectorId = Long.parseLong(inspectorIdString);
         boolean vain = cbVain.isChecked();
         boolean stapes = cbStape.isChecked();
         String damageString = etDamage.getText().toString();
-        int damage = Integer.valueOf(damageString);
+        int damage = Integer.parseInt(damageString);
         //Para informar de como se valoran los daños
-        if (damage != 0 || damage != 25 || damage != 50 || damage != 75 || damage != 100) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Valor no válido");
-            builder.setMessage("Introduzca uno de los siguientes valores");
-            builder.setMessage("Daños de: 0 , 25 , 50,  75 ó 100");
-            builder.setPositiveButton("Aceptar", null);
-            AlertDialog dialog = builder.create();
-            dialog.show();
-        }
-
+//        if (damage != 0 || damage != 25 || damage != 50 || damage != 75 || damage != 100) {
+//            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//            builder.setTitle("Valor no válido");
+//            builder.setMessage("Introduzca uno de los siguientes valores");
+//            builder.setMessage("Daños de: 0 , 25 , 50,  75 ó 100");
+//            builder.setPositiveButton("Aceptar", null);
+//            AlertDialog dialog = builder.create();
+//            dialog.show();
+//        }
         boolean platform = cbPlatform.isChecked();
         boolean condition = cbCondition.isChecked();
         String comment = etComment.getText().toString();
@@ -72,17 +88,17 @@ public class InspectionRegisterActivity extends AppCompatActivity {
                 .allowMainThreadQueries().build();
         //Controlamos que la tarea no esta ya creada en su campo primary key, controlando la excepcion
 
-        try {
+//        try {
             db.inspectionDao().insert(inspection); // Insertamos el objeto dentro de la BBDD
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Inspeccion Creada con exito");
+            builder.setMessage("Asignada al puente " + brigde.getName() + ", podrás registrar más inspecciones sobre este puente hasta que pulsar cancelar");
             builder.setPositiveButton("Aceptar", null);
             AlertDialog dialog = builder.create();
             dialog.show();
 
 //            Snackbar.make(etComment, "Inspección creada con exito", BaseTransientBottomBar.LENGTH_LONG); //etComment porque el Snackbar hay que asociarlo algún componente del layout
-            etBrigdeId.setText(""); //Para vaciar las cajas de texto y prepararlas para registrar otra tarea
             etInspectionId.setText("");
             cbVain.setChecked(false);
             cbStape.setChecked(false);
@@ -90,16 +106,16 @@ public class InspectionRegisterActivity extends AppCompatActivity {
             cbPlatform.setChecked(false);
             cbCondition.setChecked(false);
             etComment.setText("");
-            etBrigdeId.requestFocus(); //recuperamos el foco
-        } catch (SQLiteConstraintException sce) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Ha ocurrido un error. Comprueba que el dato es válido");
-            builder.setPositiveButton("Aceptar", null);
-            AlertDialog dialog = builder.create();
-            dialog.show();
-//            Toast.makeText(this, "Ha ocurrido un error. Comprueba que el dato es válido", Toast.LENGTH_LONG).show();
-//            Snackbar.make(etComment, "Ha ocurrido un error. Comprueba que el dato es válido", BaseTransientBottomBar.LENGTH_LONG);
-        }
+            etInspectionId.requestFocus(); //recuperamos el foco
+//        } catch (SQLiteConstraintException sce) {
+//            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//            builder.setTitle("Ha ocurrido un error. Comprueba que el dato es válido");
+//            builder.setPositiveButton("Aceptar", null);
+//            AlertDialog dialog = builder.create();
+//            dialog.show();
+////            Toast.makeText(this, "Ha ocurrido un error. Comprueba que el dato es válido", Toast.LENGTH_LONG).show();
+////            Snackbar.make(etComment, "Ha ocurrido un error. Comprueba que el dato es válido", BaseTransientBottomBar.LENGTH_LONG);
+//        }
     }
 
     /**
@@ -152,13 +168,23 @@ public class InspectionRegisterActivity extends AppCompatActivity {
      * @param string
      * @return
      */
-    public static long convertToLong(String string) {
-        long id;
-        try {
-            id = Long.parseLong(string);
-        } catch (NumberFormatException | NullPointerException nfe) {
-            return 0; //Valor default en caso de no poder convertir  a Long
-        }
-        return id;
-    }
+//    public static long convertToLong(String string) {
+//        long id;
+//        try {
+//            id = Long.parseLong(string);
+//        } catch (NumberFormatException | NullPointerException nfe) {
+//            return 0; //Valor default en caso de no poder convertir  a Long
+//        }
+//        return id;
+//    }
+
+//    public static long convertToInt(String string) {
+//        int number;
+//        try {
+//            number = Integer.parseInt(string);
+//        } catch (NumberFormatException | NullPointerException nfe) {
+//            return 0; //Valor default en caso de no poder convertir  a int
+//        }
+//        return number;
+//    }
 }

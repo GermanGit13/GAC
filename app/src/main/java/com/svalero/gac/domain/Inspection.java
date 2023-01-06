@@ -108,6 +108,12 @@ public class Inspection {
         return damage;
     }
 
+    public String getDamageString() {
+
+        String damageString = String.valueOf(damage);
+        return damageString;
+    }
+
     public void setDamage(int damage) {
         this.damage = damage;
     }

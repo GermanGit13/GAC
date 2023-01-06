@@ -34,12 +34,13 @@
             android:padding="5dp"
             android:text="Id Puente:" />
 
-        <EditText
-            android:id="@+id/et_inspection_brigde_id"
+        <TextView
+            android:id="@+id/tv_brige_id_add_inspection"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:numeric="integer"
-            tools:ignore="TouchTargetSizeCheck" />
+            android:layout_weight="1" />
+
+
     </LinearLayout>
 
     <LinearLayout
@@ -63,7 +64,7 @@
         android:id="@+id/et_inspection_inspector_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:numeric="integer" />
+        android:inputType="number" />
 </LinearLayout>
 
 
@@ -136,7 +137,7 @@
             android:id="@+id/et_inspection_damage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:numeric="integer" />
+            android:inputType="number" />
     </LinearLayout>
 
     <LinearLayout

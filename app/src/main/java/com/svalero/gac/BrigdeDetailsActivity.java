@@ -23,6 +23,7 @@ public class BrigdeDetailsActivity extends AppCompatActivity {
 
     FloatingActionButton fabDelete; //Para borrar desde la vista detalle
     FloatingActionButton fabModify; //Para modificar desde la vista detalle
+    FloatingActionButton fab_create_inspection; //Para crear una inspección asociada al puente
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,31 +89,54 @@ public class BrigdeDetailsActivity extends AppCompatActivity {
             AlertDialog dialog = builder.create();
             dialog.show();//Importante para que se muestre
         }));
+
+        //Método onClick para crear una inspeccion
+//        fab_create_inspection.setOnClickListener((view -> {
+//            /**
+//             * Dialogo para pregunta antes de si quiere crear una inspeccion -> https://developer.android.com/guide/topics/ui/dialogs?hl=es-419
+//             */
+//            AlertDialog.Builder builder = new AlertDialog.Builder(this); //le pasamos el contexto donde estamos
+//            builder.setMessage("¿Vas a crear una inspección?")
+//                    .setTitle("Asignar inspección a este Puente")
+//                    .setPositiveButton("Si", (dialog, id) -> { //Añadimos los botones
+//                        final AppDatabase dbD = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME) //Instanciamos la BBDD -< PAsamos el contexto para saber donde estamos
+//                                .allowMainThreadQueries().build();
+////                        Brigde brigde = bridgeList.get(position); //recuperamos el puente por su posicion
+//
+//                        intent.set(new Intent(this, InspectionRegisterActivity.class)); //Lo pasamos al activity registrar una inspeccion
+//                        intent.get().putExtra("brigde_id", brigde.getBrigde_id()); //Recogemos el id
+//                        this.startActivity(intent.get()); //lanzamos el intent que nos lleva al layout correspondiente
+//
+//                    })
+//                    .setNegativeButton("No", (dialog, id) -> dialog.dismiss()); //Botones del dialogo que salta
+//            AlertDialog dialog = builder.create();
+//            dialog.show();//Importante para que se muestre
+//        }));
     }
 
-    private void fillData(Brigde brigde) {
-        TextView tvName = findViewById(R.id.tv_brigde_name);
-        TextView tvCountry = findViewById(R.id.tv_brigde_country);
-        TextView tvCity = findViewById(R.id.tv_brigde_city);
-        TextView tvYearBuild = findViewById(R.id.tv_brigde_yearBuild);
-        TextView tvNumberVain = findViewById(R.id.tv_brigde_numbervain);
-        TextView tvNumberStapes = findViewById(R.id.tv_brigde_numberstapes);
-        TextView tvPlatform = findViewById(R.id.tv_brigde_platform);
+        private void fillData (Brigde brigde){
+            TextView tvName = findViewById(R.id.tv_brigde_name);
+            TextView tvCountry = findViewById(R.id.tv_brigde_country);
+            TextView tvCity = findViewById(R.id.tv_brigde_city);
+            TextView tvYearBuild = findViewById(R.id.tv_brigde_yearBuild);
+            TextView tvNumberVain = findViewById(R.id.tv_brigde_numbervain);
+            TextView tvNumberStapes = findViewById(R.id.tv_brigde_numberstapes);
+            TextView tvPlatform = findViewById(R.id.tv_brigde_platform);
 
-        tvName.setText(brigde.getName());
-        tvCountry.setText(brigde.getCountry());
-        tvCity.setText(brigde.getCity());
-        tvYearBuild.setText(brigde.getYearBuild());
-        tvNumberVain.setText(brigde.getNumberVain());
-        tvNumberStapes.setText(brigde.getNumberStapes());
-        tvPlatform.setText(brigde.getPlatform());
-    }
+            tvName.setText(brigde.getName());
+            tvCountry.setText(brigde.getCountry());
+            tvCity.setText(brigde.getCity());
+            tvYearBuild.setText(brigde.getYearBuild());
+            tvNumberVain.setText(brigde.getNumberVain());
+            tvNumberStapes.setText(brigde.getNumberStapes());
+            tvPlatform.setText(brigde.getPlatform());
+        }
 
-    /**
-     * Para volver al listado de puentes despues de borrar desde la vista de detall
-     */
-    private void brigdeList () {
-        Intent intent = new Intent(this, BridgeAllActivity.class); //Desde la vista que estamos a la vista que queremos ir
-        startActivity(intent); //iniciamos el intent
-    }
+        /**
+         * Para volver al listado de puentes despues de borrar desde la vista de detall
+         */
+        private void brigdeList () {
+            Intent intent = new Intent(this, BridgeAllActivity.class); //Desde la vista que estamos a la vista que queremos ir
+            startActivity(intent); //iniciamos el intent
+        }
 }
