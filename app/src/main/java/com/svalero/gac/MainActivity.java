@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     Button addBrige;
     Button listInspector;
     Button addInspector;
+    Button listInspection;
+    Button addInspection;
 
 
     /**
@@ -64,6 +66,18 @@ public class MainActivity extends AppCompatActivity {
         addInspector = findViewById(R.id.add_inspector_main_button);
         addInspector.setOnClickListener(view -> {
             Intent intent = new Intent(this, InspectorRegisterActivity.class); //donde nos manda al pinchar sobre el boton mapas en el action bar
+            startActivity(intent);
+        });
+
+//        listInspection = findViewById(R.id.list_inspection_main_button);
+//        listInspection.setOnClickListener(view -> {
+//            Intent intent = new Intent(this, InspectionAllActivity.class); //donde nos manda al pinchar sobre el boton mapas en el action bar
+//            startActivity(intent);
+//        });
+
+        addInspection = findViewById(R.id.add_inspection_main_button);
+        addInspection.setOnClickListener(view -> {
+            Intent intent = new Intent(this, InspectionRegisterActivity.class); //donde nos manda al pinchar sobre el boton mapas en el action bar
             startActivity(intent);
         });
 

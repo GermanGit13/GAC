@@ -11,7 +11,7 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "inspections",
         foreignKeys = {
                 @ForeignKey(entity = Inspector.class, parentColumns = "inspector_id", childColumns = "inspectorCreatorId", onDelete = SET_NULL),
-                @ForeignKey(entity = Brigde.class, parentColumns = "brige_id", childColumns = "bridgeInspId", onDelete = SET_NULL)
+                @ForeignKey(entity = Brigde.class, parentColumns = "brigde_id", childColumns = "bridgeInspId", onDelete = SET_NULL)
         })
 public class Inspection {
 
@@ -50,7 +50,7 @@ public class Inspection {
         this.damage = damage;
         this.platformIns = platformIns;
         this.condition = condition;
-        Comment = comment;
+        this.Comment = comment;
     }
 
     public Inspection(long inspectorCreatorId, long bridgeInspId, boolean vain, boolean stapes, int damage, boolean platformIns, boolean condition, String comment) {
@@ -61,7 +61,7 @@ public class Inspection {
         this.damage = damage;
         this.platformIns = platformIns;
         this.condition = condition;
-        Comment = comment;
+        this.Comment = comment;
     }
 
     public long getInspection_id() {
