@@ -153,13 +153,13 @@ public class InspectionRegisterActivity extends AppCompatActivity {
     private void camera() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE); //
         }
     }
 
     /**
-     * Recuperar la foto creada
-     * @param requestCode
+     * Recuperar la foto creada, recupera el resultado de la actividad que realiza el método de la cámara
+     * @param requestCode : para indicarle cual es el que tiene que recoger porque podriamos tener más ActiviyResult
      * @param resultCode
      * @param data
      */
