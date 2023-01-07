@@ -96,7 +96,6 @@ public class InspectorAdapter extends RecyclerView.Adapter<InspectorAdapter.Insp
 
         public View parentView; //vista padre - como el recyclerView
 
-
         /**
          * 5) Consturctor del Holder
          *

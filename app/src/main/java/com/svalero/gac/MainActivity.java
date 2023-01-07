@@ -69,17 +69,16 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-//        listInspection = findViewById(R.id.list_inspection_main_button);
-//        listInspection.setOnClickListener(view -> {
-//            Intent intent = new Intent(this, InspectionAllActivity.class); //donde nos manda al pinchar sobre el boton mapas en el action bar
-//            startActivity(intent);
-//        });
-
-        addInspection = findViewById(R.id.add_inspection_main_button);
-        addInspection.setOnClickListener(view -> {
-            Intent intent = new Intent(this, InspectionRegisterActivity.class); //donde nos manda al pinchar sobre el boton mapas en el action bar
+        listInspection = findViewById(R.id.list_inspection_main_button);
+        listInspection.setOnClickListener(view -> {
+            Intent intent = new Intent(this, InspectionAllActivity.class); //donde nos manda al pinchar sobre el boton mapas en el action bar
             startActivity(intent);
         });
+
+//        addInspection.setOnClickListener(view -> {
+//            Intent intent = new Intent(this, InspectionRegisterActivity.class); //donde nos manda al pinchar sobre el boton mapas en el action bar
+//            startActivity(intent);
+//        });
 
 //        /**
 //         * Pauta generales para trabajar con recyclerView. Para que se ajuste al layout y nos haga caso
