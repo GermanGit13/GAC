@@ -45,12 +45,6 @@ public class BridgeAdapter extends RecyclerView.Adapter<BridgeAdapter.BrigdeHold
         this.bridgeList = dataList; //La lista de los puentes
     }
 
-//    public BridgeAdapter(Context context, Brigde brigde) {
-//        this.context = context; //El contexto
-//        this.brigde = brigde;
-//    }
-
-
     /**
      * Metodo con el que Android va a inflar, va a crear cada estructura del layout donde irán los datos de cada puente.
      * Vista detalle de cada puente

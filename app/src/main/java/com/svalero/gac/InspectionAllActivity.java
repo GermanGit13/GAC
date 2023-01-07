@@ -23,6 +23,7 @@ public class InspectionAllActivity extends AppCompatActivity {
     private List<Inspection> inspectionList; //Lista de inspecciones para obtener los todos las inspecciones de la BBDD
     private InspectionAdapter adapter; //Para poder conectar con la BBDD
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

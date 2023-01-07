@@ -45,7 +45,8 @@ public class InspectionAdapter extends RecyclerView.Adapter<InspectionAdapter.In
      */
     public InspectionAdapter(Context context, List<Inspection> dataList) {
         this.context = context; //El contexto
-        this.inspectionList = dataList; //La lista de los puentes
+        this.inspectionList = dataList; //La lista de las inspecciones
+
     }
 
     /**
@@ -72,9 +73,17 @@ public class InspectionAdapter extends RecyclerView.Adapter<InspectionAdapter.In
      */
     @Override
     public void onBindViewHolder(InspectionAdapter.InspectionHolder holder, int position) {
-        //TODO revisar
-//        holder.inspectionBrigdeName.setText((int) inspectionList.get(position).getBridgeInspId());
-//        holder.inspectionInspectorName.setText(Math.toIntExact(inspectionList.get(position).getInspectorCreatorId()));
+
+        /**
+         * Me conecto a la BBDD creo el puente y el inspector
+         */
+        final AppDatabase db = Room.databaseBuilder(context, AppDatabase.class, DATABASE_NAME)
+                .allowMainThreadQueries().build();
+        Brigde brigde = db.brigdeDao().getById(inspectionList.get(position).bridgeInspId); //creamos el puente por su id
+        Inspector inspector = db.inspectorDao().getById(inspectionList.get(position).inspectorCreatorId); //Creamos el inspector por su id
+
+        holder.inspectionBrigdeName.setText(brigde.getName());
+        holder.inspectionInspectorName.setText(inspector.getName());
         holder.inspectionComment.setText(inspectionList.get(position).getComment());
     }
 
