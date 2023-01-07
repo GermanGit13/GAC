@@ -35,7 +35,8 @@ public class Inspection {
     private boolean condition;
     @ColumnInfo
     private String Comment;
-    //Todo campo fecha
+//    @ColumnInfo
+//    private String imagePath = "";
 
     public Inspection() {
 

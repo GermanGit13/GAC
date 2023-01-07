@@ -6,15 +6,19 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.database.sqlite.SQLiteConstraintException;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.svalero.gac.adapter.BridgeAdapter;
@@ -29,7 +33,11 @@ public class InspectionRegisterActivity extends AppCompatActivity {
     private long inspectorId; //Para guardarnos el id de Inspector a asociar a la inspeccion
     private Brigde brigde; //para tener el puente a mano
     private BridgeAdapter adapterBrigde; //Para poder conectar con la BBDD
+    Button btnCamera; //Boton que al pulsar abrira la camara en el layout de registrar inspeccion
+    ImageView imageView; //Para que aparezca la foto aquí
+    static final int REQUEST_IMAGE_CAPTURE = 1;
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +53,18 @@ public class InspectionRegisterActivity extends AppCompatActivity {
 
         TextView tvName = findViewById(R.id.tv_brige_id_add_inspection);
         tvName.setText(brigde.getName());
+
+        btnCamera = findViewById(R.id.camera_inspetion_button); //Asignamos los elementos al elemento del layout
+        imageView = findViewById(R.id.imv_inspection_add); //Asignamos el elemenot dodn ira la imagen
+
+        //Implemento el Onclik para que escuche al presionar el boton de la foto
+        btnCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                camera();
+            }
+        });
+
     }
 
     /**
@@ -128,6 +148,31 @@ public class InspectionRegisterActivity extends AppCompatActivity {
     }
 
     /**
+     * Metodo para abrir la camara mediante un intent
+     */
+    private void camera() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
+    }
+
+    /**
+     * Recuperar la foto creada
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            imageView.setImageBitmap(imageBitmap);
+        }
+    }
+
+    /**
      * PAra crear el menu (el actionBar)
      * @param menu
      * @return
@@ -163,28 +208,4 @@ public class InspectionRegisterActivity extends AppCompatActivity {
         return false;
     }
 
-    /**
-     * Para poder pasar el id que recibo como string de la TextView a Long
-     * @param string
-     * @return
-     */
-//    public static long convertToLong(String string) {
-//        long id;
-//        try {
-//            id = Long.parseLong(string);
-//        } catch (NumberFormatException | NullPointerException nfe) {
-//            return 0; //Valor default en caso de no poder convertir  a Long
-//        }
-//        return id;
-//    }
-
-//    public static long convertToInt(String string) {
-//        int number;
-//        try {
-//            number = Integer.parseInt(string);
-//        } catch (NumberFormatException | NullPointerException nfe) {
-//            return 0; //Valor default en caso de no poder convertir  a int
-//        }
-//        return number;
-//    }
 }

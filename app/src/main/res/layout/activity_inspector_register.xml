@@ -26,7 +26,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout15">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imv_inspection_add"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:srcCompat="@tools:sample/avatars" />
