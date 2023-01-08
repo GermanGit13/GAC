@@ -45,7 +45,7 @@ public class InspectionAllActivity extends AppCompatActivity {
          * FIN Pauta generales para trabajar con recyclerView
          */
 
-        adapter = new InspectionAdapter(this, inspectionList);  //creamos el adapter y le pasamos la vista actual y la lista de puentes
+        adapter = new InspectionAdapter(this, inspectionList);  //creamos el adapter y le pasamos la vista actual y la lista de inspecciones
         recyclerView.setAdapter(adapter); //el adaptador que sabe como poblar de datos la lista en android
     }
 

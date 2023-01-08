@@ -30,18 +30,18 @@ import java.util.List;
  */
 public class InspectorAdapter extends RecyclerView.Adapter<InspectorAdapter.InspectorHolder> {
 
-    private Context context; // Es la activity en la que estamos
-    private List<Inspector> inspectorList; //Lista de inspectores para pintarlo en el RecyclerView
-    private Inspector inspector; // Objeto inspector
+    private Context context;
+    private List<Inspector> inspectorList;
+    private Inspector inspector;
 
     /**
      * 1) Constructor que creamos para pasarle los datos que queremos que pinte
-     *
+     * contexto y lista de Inspectores
      * @param dataList Lista de inspectores que le pasamos
      */
     public InspectorAdapter(Context context, List<Inspector> dataList) {
-        this.context = context; //El contexto
-        this.inspectorList = dataList; //La lista de los puentes
+        this.context = context;
+        this.inspectorList = dataList;
     }
 
     /**
@@ -116,7 +116,7 @@ public class InspectorAdapter extends RecyclerView.Adapter<InspectorAdapter.Insp
 
             //Para decirle que hace el boton cuando pulsamos sobre el
             // Ver detalles de un inspector
-            detailsInspectorButton.setOnClickListener(v -> detailsInspectorButton(getAdapterPosition())); //al pulsar lo llevamos al método detailsBrigdeButton
+            detailsInspectorButton.setOnClickListener(v -> detailsInspectorButton(getAdapterPosition())); //al pulsar lo llevamos al método detailsInspectorButton
 //            // Modificar un inspector
 //            modifyBrigdeButton.setOnClickListener(v -> modifyBrigdeButton(getAdapterPosition()));
             // Eliminar un inspector
