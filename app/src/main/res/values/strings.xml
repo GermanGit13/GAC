@@ -59,4 +59,7 @@
     <string name="ad_inspector">Añadir Inspector</string>
     <string name="add_brigde">Añadir Puente</string>
     <string name="back">Back</string>
+    <string name="register_inspection_with_id">Para Registrar una inspeccion necesita tu Id</string>
+    <string name="shearch_id_inspector">Puedes consultarlo en el listado de inspectores una vez te hayas registrado</string>
+    <string name="Accept">Aceptar</string>
 </resources>

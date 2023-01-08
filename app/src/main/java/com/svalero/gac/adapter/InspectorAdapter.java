@@ -68,6 +68,7 @@ public class InspectorAdapter extends RecyclerView.Adapter<InspectorAdapter.Insp
      */
     @Override
     public void onBindViewHolder(InspectorAdapter.InspectorHolder holder, int position) {
+        holder.inspectorId.setText(String.valueOf(inspectorList.get(position).getInspector_id()));
         holder.inspectorName.setText(inspectorList.get(position).getName());
         holder.inspectorSurname.setText(inspectorList.get(position).getSurname());
         holder.inspectorLicense.setText(inspectorList.get(position).getNumberLicense());
@@ -91,6 +92,7 @@ public class InspectorAdapter extends RecyclerView.Adapter<InspectorAdapter.Insp
         public TextView inspectorName;
         public TextView inspectorSurname;
         public TextView inspectorLicense;
+        public TextView inspectorId;
         public Button detailsInspectorButton;
         public Button deleteInspectorButton;
 
@@ -105,6 +107,7 @@ public class InspectorAdapter extends RecyclerView.Adapter<InspectorAdapter.Insp
             super(view); //Vista padre
             parentView = view; //Guardamos el componente padre
 
+            inspectorId = view.findViewById(R.id.it_inspector_id);
             inspectorName = view.findViewById(R.id.it_inspector_name);
             inspectorSurname = view.findViewById(R.id.it_inspector_surname);
             inspectorLicense = view.findViewById(R.id.it_inspector_license);

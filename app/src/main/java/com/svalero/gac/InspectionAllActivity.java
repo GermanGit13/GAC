@@ -8,16 +8,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.svalero.gac.adapter.InspectionAdapter;
-import com.svalero.gac.adapter.InspectorAdapter;
 import com.svalero.gac.db.AppDatabase;
 import com.svalero.gac.domain.Inspection;
-import com.svalero.gac.domain.Inspector;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -114,4 +113,5 @@ public class InspectionAllActivity extends AppCompatActivity {
 
         return false;
     }
+
 }

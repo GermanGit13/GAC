@@ -73,6 +73,8 @@ public class InspectionRegisterActivity extends AppCompatActivity {
             }
         });
 
+        noticeId();
+
     }
 
     /**
@@ -248,5 +250,19 @@ public class InspectionRegisterActivity extends AppCompatActivity {
 
         pathImage = imageTemp.getAbsolutePath(); //guardamos la ruta absoluta de la imagen
         return imageTemp;
+    }
+
+    private void noticeId() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(R.string.register_inspection_with_id);
+            builder.setMessage(R.string.shearch_id_inspector);
+            builder.setPositiveButton(R.string.Accept, null);
+            AlertDialog dialog = builder.create();
+            dialog.show();
+//                .setNegativeButton(R.string.not, (dialog, id) -> dialog.dismiss()); //Botones del dialogo que salta
+//        Intent intent = new Intent(this, InspectorDetailsActivity.class); //Lo devuelvo al details del inspector
+//        this.startActivity(intent); //lanzamos el intent que nos lleva al layout correspondiente
+//        AlertDialog dialog = builder.create();
+//        dialog.show();//Importante para que se muestre
     }
 }
