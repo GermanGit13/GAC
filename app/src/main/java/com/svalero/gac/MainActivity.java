@@ -1,20 +1,15 @@
 package com.svalero.gac;
 
-import static com.svalero.gac.db.Constants.DATABASE_NAME;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 import com.svalero.gac.adapter.BridgeAdapter;
-import com.svalero.gac.db.AppDatabase;
 import com.svalero.gac.domain.Brigde;
 
 import java.util.ArrayList;
@@ -28,6 +23,13 @@ public class MainActivity extends AppCompatActivity {
 
     private List<Brigde> brigdeList; //Lista de puentes para obtener los todos los puentes de la BBDD
     private BridgeAdapter adapter; //Para poder conectar con la BBDD
+    Button listBrigde; // Creamos el objeto button que esta en mainactivity
+    Button addBrige;
+    Button listInspector;
+    Button addInspector;
+    Button listInspection;
+    Button addInspection;
+
 
     /**
      * Método onCreate: mínimo obligatorio, primer método que una activity arranca por primera vez.
@@ -43,19 +45,54 @@ public class MainActivity extends AppCompatActivity {
 
         brigdeList = new ArrayList<>(); //Instanciamos la lista a vacio la seguimos usando como referencia pero la llenamos con la BBDD
 
-        /**
-         * Pauta generales para trabajar con recyclerView. Para que se ajuste al layout y nos haga caso
-         */
-        RecyclerView recyclerView = findViewById(R.id.brigde_list); //Nos hacemos con el RecyclerView que en el layout activity_main.xml le hemos llamado brigde_list
-        recyclerView.setHasFixedSize(true); //para decirle que tiene un tamaño fijo y ocupe xtodo lo que tiene asigando
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this); //Para decirle al activity que lo va a gestionar un layoutManager
-        recyclerView.setLayoutManager(layoutManager); // para que el reciclerView se ciña al layoutManager
-        /**
-         * FIN Pauta generales para trabajar con recyclerView
-         */
+        listBrigde = findViewById(R.id.list_brigde_main_button);
+        listBrigde.setOnClickListener(view -> {
+            Intent intent = new Intent(this, BridgeAllActivity.class); //donde nos manda al pinchar sobre el boton mapas en el action bar
+            startActivity(intent);
+        });
 
-        adapter = new BridgeAdapter(this, brigdeList);  //creamos el adapter y le pasamos la vista actual y la lista de puentes
-        recyclerView.setAdapter(adapter); //el adaptador que sabe como poblar de datos la lista en android
+        addBrige = findViewById(R.id.add_brigde_main_button);
+        addBrige.setOnClickListener(view -> {
+            Intent intent = new Intent(this, RegisterBrigdeActivity.class); //donde nos manda al pinchar sobre el boton mapas en el action bar
+            startActivity(intent);
+        });
+
+        listInspector = findViewById(R.id.list_inspector_main_button);
+        listInspector.setOnClickListener(view -> {
+            Intent intent = new Intent(this, InspectorAllActivity.class); //donde nos manda al pinchar sobre el boton mapas en el action bar
+            startActivity(intent);
+        });
+
+        addInspector = findViewById(R.id.add_inspector_main_button);
+        addInspector.setOnClickListener(view -> {
+            Intent intent = new Intent(this, InspectorRegisterActivity.class); //donde nos manda al pinchar sobre el boton mapas en el action bar
+            startActivity(intent);
+        });
+
+        listInspection = findViewById(R.id.list_inspection_main_button);
+        listInspection.setOnClickListener(view -> {
+            Intent intent = new Intent(this, InspectionAllActivity.class); //donde nos manda al pinchar sobre el boton mapas en el action bar
+            startActivity(intent);
+        });
+
+//        addInspection.setOnClickListener(view -> {
+//            Intent intent = new Intent(this, InspectionRegisterActivity.class); //donde nos manda al pinchar sobre el boton mapas en el action bar
+//            startActivity(intent);
+//        });
+
+//        /**
+//         * Pauta generales para trabajar con recyclerView. Para que se ajuste al layout y nos haga caso
+//         */
+//        RecyclerView recyclerView = findViewById(R.id.brigde_list); //Nos hacemos con el RecyclerView que en el layout activity_main.xml le hemos llamado brigde_list
+//        recyclerView.setHasFixedSize(true); //para decirle que tiene un tamaño fijo y ocupe xtodo lo que tiene asigando
+//        LinearLayoutManager layoutManager = new LinearLayoutManager(this); //Para decirle al activity que lo va a gestionar un layoutManager
+//        recyclerView.setLayoutManager(layoutManager); // para que el reciclerView se ciña al layoutManager
+//        /**
+//         * FIN Pauta generales para trabajar con recyclerView
+//         */
+//
+//        adapter = new BridgeAdapter(this, brigdeList);  //creamos el adapter y le pasamos la vista actual y la lista de puentes
+//        recyclerView.setAdapter(adapter); //el adaptador que sabe como poblar de datos la lista en android
     }
 
     /**
@@ -72,12 +109,12 @@ public class MainActivity extends AppCompatActivity {
          * "tasks" el nombre de la BBDD
          * .allowMainThreadQueries().build(); -> Es para que android nos deje hacerlo sin tener de concurrencia
          */
-            final AppDatabase db = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME)
-                    .allowMainThreadQueries().build();
-
-            brigdeList.clear(); //Vaciamos la taskList por si tuviera algo
-            brigdeList.addAll(db.brigdeDao().getAll()); //Añadimos xtodo lo que la BBDD nos devuelve
-            adapter.notifyDataSetChanged(); //Para que actualice desde la BBDD
+//            final AppDatabase db = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME)
+//                    .allowMainThreadQueries().build();
+//
+//            brigdeList.clear(); //Vaciamos la taskList por si tuviera algo
+//            brigdeList.addAll(db.brigdeDao().getAll()); //Añadimos xtodo lo que la BBDD nos devuelve
+//            adapter.notifyDataSetChanged(); //Para que actualice desde la BBDD
     }
 
     /**
@@ -107,11 +144,19 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, MapsActivity.class); //donde nos manda al pinchar sobre el boton mapas en el action bar
             startActivity(intent);
             return true;
+        } else if (item.getItemId() == R.id.register_inspector) {
+            Intent intent    = new Intent(this, InspectorRegisterActivity.class);
+            startActivity(intent);
+            return true;
+        } else if (item.getItemId() == R.id.go_init) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            return true;
+        } else if (item.getItemId() == R.id.ab_back) {
+            onBackPressed();
+            return true;
         }
 
         return false;
     }
-
-
-
 }

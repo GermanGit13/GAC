@@ -14,19 +14,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-//@Entity(tableName = "brigdes",
-//        foreignKeys = @ForeignKey(entity = Inspector.class,
-//                parentColumns = "inspector_id",
-//                childColumns = "inspectorBrigdeId",
-//                onDelete = SET_NULL))
 @Entity(tableName = "bridges")
 public class Brigde {
 
     @PrimaryKey(autoGenerate = true)
     @NonNull
     private long brigde_id;
-//    @ColumnInfo
-//    private long inspectorCreatorId;
+
     @NonNull
     private String name;
     @ColumnInfo
@@ -35,43 +29,39 @@ public class Brigde {
     private String city;
     @ColumnInfo
     private String yearBuild;
-//    @ColumnInfo
-//    private double latitude; //para poder ubicar en el mapa
-//    @ColumnInfo
-//    private double longitude; //para poder ubicar en el mapa
     @ColumnInfo
-    private int numberVain;
+    private double latitude; //para poder ubicar en el mapa
     @ColumnInfo
-    private int numberStapes;
+    private double longitude; //para poder ubicar en el mapa
+    @ColumnInfo
+    private String numberVain;
+    @ColumnInfo
+    private String numberStapes;
     @ColumnInfo
     private String platform;
 
-//    @Embedded
-//    public Inspection inspection;
 
-    public Brigde(long brigde_id, /*long inspectorCreatorId,*/ String name, String country, String city, String yearBuild, /*double latitude, double longitude,*/ int numberVain, int numberStapes, String platform) {
+    public Brigde(long brigde_id, String name, String country, String city, String yearBuild, double latitude, double longitude, String  numberVain, String numberStapes, String platform) {
         this.brigde_id = brigde_id;
-//        this.inspectorCreatorId = inspectorCreatorId;
         this.name = name;
         this.country = country;
         this.city = city;
         this.yearBuild = yearBuild;
-//        this.latitude = latitude;
-//        this.longitude = longitude;
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.numberVain = numberVain;
         this.numberStapes = numberStapes;
         this.platform = platform;
     }
 
-    public Brigde(/*long inspectorCreatorId,*/ String name, String country, String city, String yearBuild, /*double latitude, double longitude,*/ int numberVain, int numberStapes, String platform) {
-//        this.brigde_id = brigde_id;
-//        this.inspectorCreatorId = inspectorCreatorId;
+    public Brigde(String name, String country, String city, String yearBuild, double latitude, double longitude, String numberVain, String numberStapes, String platform) {
+
         this.name = name;
         this.country = country;
         this.city = city;
         this.yearBuild = yearBuild;
-//        this.latitude = latitude;
-//        this.longitude = longitude;
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.numberVain = numberVain;
         this.numberStapes = numberStapes;
         this.platform = platform;
@@ -121,35 +111,35 @@ public class Brigde {
         this.yearBuild = yearBuild;
     }
 
-//    public double getLatitude() {
-//        return latitude;
-//    }
-//
-//    public void setLatitude(double latitude) {
-//        this.latitude = latitude;
-//    }
-//
-//    public double getLongitude() {
-//        return longitude;
-//    }
-//
-//    public void setLongitude(double longitude) {
-//        this.longitude = longitude;
-//    }
+    public double getLatitude() {
+        return latitude;
+    }
 
-    public int getNumberVain() {
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public String  getNumberVain() {
         return numberVain;
     }
 
-    public void setNumberVain(int numberVain) {
+    public void setNumberVain(String numberVain) {
         this.numberVain = numberVain;
     }
 
-    public int getNumberStapes() {
+    public String getNumberStapes() {
         return numberStapes;
     }
 
-    public void setNumberStapes(int numberStapes) {
+    public void setNumberStapes(String numberStapes) {
         this.numberStapes = numberStapes;
     }
 

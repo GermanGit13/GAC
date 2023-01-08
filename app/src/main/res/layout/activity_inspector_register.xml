@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:textAlignment="center"
+    tools:context=".InspectorRegisterActivity">
+
+    <TextView
+        android:id="@+id/tv_description_formulario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="@string/inspector_registration_form"
+        android:textAlignment="center"
+        android:textColor="#2196F3"
+        android:textColorHint="#03A9F4"
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout15">
+
+        <ImageView
+            android:id="@+id/imv_inspection_add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:srcCompat="@tools:sample/avatars" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout13"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout12">
+
+        <TextView
+            android:id="@+id/tv_inspector_number_license"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:text="@string/number_license" />
+
+        <EditText
+            android:id="@+id/et_inspector_number_license"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout15"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout14"
+        tools:layout_editor_absoluteX="10dp">
+
+        <TextView
+            android:id="@+id/tv_inspector_company"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:text="@string/company" />
+
+        <EditText
+            android:id="@+id/et_inspector_company"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            tools:ignore="TouchTargetSizeCheck" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout11">
+
+        <TextView
+            android:id="@+id/tv_inspector_surname"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="@string/surname" />
+
+        <EditText
+            android:id="@+id/et_inspector_surname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_inspector_name"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="@string/name" />
+
+        <EditText
+            android:id="@+id/et_inspector_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            tools:ignore="TouchTargetSizeCheck" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout13"
+        tools:layout_editor_absoluteX="10dp">
+
+        <TextView
+            android:id="@+id/tv_inspector_dni"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:text="@string/dni" />
+
+        <EditText
+            android:id="@+id/et_inspector_dni"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <Button
+            android:id="@+id/add_inspector_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="saveButtonInspector"
+            android:text="@string/save"
+            app:icon="@drawable/save" />
+
+        <Button
+            android:id="@+id/back_inspector_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="goBackButton"
+            android:text="@string/cancel"
+            app:icon="@drawable/cancel" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
