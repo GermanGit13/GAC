@@ -101,7 +101,7 @@ public class RegisterBrigdeActivity extends AppCompatActivity {
             etPlatform.setText("");
             etName.requestFocus(); //recuperamos el foco
         } catch (SQLiteConstraintException sce) {
-            Snackbar.make(etName, "Ha ocurrido un error. Comprueba que el dato es válido", BaseTransientBottomBar.LENGTH_LONG);
+            Snackbar.make(etName, R.string.brigde_error, BaseTransientBottomBar.LENGTH_LONG);
         }
 
     }

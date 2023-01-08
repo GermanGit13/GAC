@@ -63,9 +63,9 @@ public class InspectorModifyActivity extends AppCompatActivity {
         //Controlamos que la tarea no esta ya creada en su campo primary key, controlando la excepcion
         try {
             AlertDialog.Builder builder = new AlertDialog.Builder(this); //le pasamos el contexto donde estamos
-            builder.setMessage("¿Seguro que quieres modificar")
-                    .setTitle("Modificar Inspector")
-                    .setPositiveButton("Si", (dialog, id) -> { //Añadimos los botones
+            builder.setMessage(R.string.do_you_want_to_modify)
+                    .setTitle(R.string.modify_inspector)
+                    .setPositiveButton(R.string.yes, (dialog, id) -> { //Añadimos los botones
                         final AppDatabase dbD = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME) //Instanciamos la BBDD -< PAsamos el contexto para saber donde estamos
                                 .allowMainThreadQueries().build();
 
@@ -75,7 +75,7 @@ public class InspectorModifyActivity extends AppCompatActivity {
                         intent.putExtra("inspector_id", inspector.getInspector_id());
                         this.startActivity(intent); //lanzamos el intent que nos lleva al layout correspondiente
                     })
-                    .setNegativeButton("No", (dialog, id) -> dialog.dismiss()); //Botones del dialogo que salta
+                    .setNegativeButton(R.string.not, (dialog, id) -> dialog.dismiss()); //Botones del dialogo que salta
             AlertDialog dialog = builder.create();
             dialog.show();//Importante para que se muestre
 

@@ -54,7 +54,7 @@ public class InspectorRegisterActivity extends AppCompatActivity {
         try {
             db.inspectorDao().insert(inspector); // Insertamos el objeto dentro de la BBDD
 
-            Snackbar.make(etName, "Inspector creado con éxito", BaseTransientBottomBar.LENGTH_LONG); //etName porque el Snackbar hay que asociarlo algún componente del layout
+            Snackbar.make(etName, R.string.inspector_create_ok, BaseTransientBottomBar.LENGTH_LONG); //etName porque el Snackbar hay que asociarlo algún componente del layout
             etName.setText(""); //Para vaciar las cajas de texto y prepararlas para registrar otra tarea
             etSurname.setText("");
             etNumberLicense.setText("");
@@ -62,7 +62,7 @@ public class InspectorRegisterActivity extends AppCompatActivity {
             etCompany.setText("");
             etName.requestFocus(); //recuperamos el foco
         } catch (SQLiteConstraintException sce) {
-            Snackbar.make(etName, "Ha ocurrido un error. Comprueba que el dato es válido", BaseTransientBottomBar.LENGTH_LONG);
+            Snackbar.make(etName, R.string.inspector_error, BaseTransientBottomBar.LENGTH_LONG);
         }
     }
 

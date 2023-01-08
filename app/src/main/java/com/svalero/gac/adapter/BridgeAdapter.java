@@ -164,9 +164,9 @@ public class BridgeAdapter extends RecyclerView.Adapter<BridgeAdapter.BrigdeHold
              * Dialogo para pregunta antes de si quiere borrar -> https://developer.android.com/guide/topics/ui/dialogs?hl=es-419
              */
             AlertDialog.Builder builder = new AlertDialog.Builder(context); //le pasamos el contexto donde estamos
-            builder.setMessage("¿Seguro que quieres eliminar")
-                    .setTitle("Eliminar Puente")
-                    .setPositiveButton("Si", (dialog, id) -> { //Añadimos los botones
+            builder.setMessage(R.string.do_you_want_to_detele)
+                    .setTitle(R.string.delete_brigde)
+                    .setPositiveButton(R.string.yes, (dialog, id) -> { //Añadimos los botones
                         final AppDatabase db = Room.databaseBuilder(context, AppDatabase.class, DATABASE_NAME) //Instanciamos la BBDD -< PAsamos el contexto para saber donde estamos
                                 .allowMainThreadQueries().build();
                         Brigde brigde = bridgeList.get(position); //Recuperamos el objeto po su posicion para pasarselo al delete
@@ -175,7 +175,7 @@ public class BridgeAdapter extends RecyclerView.Adapter<BridgeAdapter.BrigdeHold
                         bridgeList.remove(position); //Borra solo de la lista que muestra no de la BBDD
                         notifyItemRemoved(position); // Para notificar a Android que hemos borrado algo y refrescar la lista
                     })
-                    .setNegativeButton("No", (dialog, id) -> dialog.dismiss()); //Botones del dialogo que salta
+                    .setNegativeButton(R.string.not, (dialog, id) -> dialog.dismiss()); //Botones del dialogo que salta
             AlertDialog dialog = builder.create();
             dialog.show();//Importante para que se muestre
         }

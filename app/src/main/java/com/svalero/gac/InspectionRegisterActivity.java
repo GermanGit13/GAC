@@ -120,9 +120,9 @@ public class InspectionRegisterActivity extends AppCompatActivity {
             db.inspectionDao().insert(inspection); // Insertamos el objeto dentro de la BBDD
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Inspeccion Creada con exito");
-            builder.setMessage("Asignada al puente " + brigde.getName() + ", podrás registrar más inspecciones sobre este puente hasta que pulsar cancelar");
-            builder.setPositiveButton("Aceptar", null);
+            builder.setTitle(R.string.inspection_created);
+            builder.setMessage(getString(R.string.assigned_to_brigde) + brigde.getName() + getString(R.string.more_register_inspection));
+            builder.setPositiveButton(R.string.ok, null);
             AlertDialog dialog = builder.create();
             dialog.show();
 
@@ -235,9 +235,9 @@ public class InspectionRegisterActivity extends AppCompatActivity {
      * @return
      */
     private File saveImage() throws IOException {
-        String nameImage = "foto_" ; //Para asignarle un nombre a la foto
+        String nameImage = getString(R.string.photo) ; //Para asignarle un nombre a la foto
         File directory = getExternalFilesDir(Environment.DIRECTORY_PICTURES); //donde vamos a guardar las imagenes
-        File imageTemp = File.createTempFile(nameImage, "jpeg", directory); //Para salvar el archivo temporal, nombre de la foto, extension y directorio donde ira
+        File imageTemp = File.createTempFile(nameImage, getString(R.string.jpeg), directory); //Para salvar el archivo temporal, nombre de la foto, extension y directorio donde ira
 
         pathImage = imageTemp.getAbsolutePath(); //guardamos la ruta absoluta de la imagen
         return imageTemp;

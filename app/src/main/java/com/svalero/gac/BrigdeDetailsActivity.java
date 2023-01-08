@@ -53,16 +53,16 @@ public class BrigdeDetailsActivity extends AppCompatActivity {
              * Dialogo para pregunta antes de si quiere borrar -> https://developer.android.com/guide/topics/ui/dialogs?hl=es-419
              */
             AlertDialog.Builder builder = new AlertDialog.Builder(this); //le pasamos el contexto donde estamos
-            builder.setMessage("¿Seguro que quieres eliminar")
-                    .setTitle("Eliminar Puente")
-                    .setPositiveButton("Si", (dialog, id) -> { //Añadimos los botones
+            builder.setMessage(R.string.do_you_want_to_detele)
+                    .setTitle(R.string.delete_brigde)
+                    .setPositiveButton(R.string.yes, (dialog, id) -> { //Añadimos los botones
                         final AppDatabase dbD = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME) //Instanciamos la BBDD -< PAsamos el contexto para saber donde estamos
                                 .allowMainThreadQueries().build();
                         dbD.brigdeDao().delete(brigde);
                         brigdeList();
 
                     })
-                    .setNegativeButton("No", (dialog, id) -> dialog.dismiss()); //Botones del dialogo que salta
+                    .setNegativeButton(R.string.not, (dialog, id) -> dialog.dismiss()); //Botones del dialogo que salta
             AlertDialog dialog = builder.create();
             dialog.show();//Importante para que se muestre
         }));
@@ -73,9 +73,9 @@ public class BrigdeDetailsActivity extends AppCompatActivity {
              * Dialogo para pregunta antes de si quiere modificar -> https://developer.android.com/guide/topics/ui/dialogs?hl=es-419
              */
             AlertDialog.Builder builder = new AlertDialog.Builder(this); //le pasamos el contexto donde estamos
-            builder.setMessage("¿Seguro que quieres modificar")
-                    .setTitle("Modificar Puente")
-                    .setPositiveButton("Si", (dialog, id) -> { //Añadimos los botones
+            builder.setMessage(R.string.do_you_want_to_modify)
+                    .setTitle(R.string.modify_brigde)
+                    .setPositiveButton(R.string.yes, (dialog, id) -> { //Añadimos los botones
                         final AppDatabase dbD = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME) //Instanciamos la BBDD -< PAsamos el contexto para saber donde estamos
                                 .allowMainThreadQueries().build();
 //                        Brigde brigde = bridgeList.get(position); //recuperamos el puente por su posicion
@@ -85,7 +85,7 @@ public class BrigdeDetailsActivity extends AppCompatActivity {
                         this.startActivity(intent.get()); //lanzamos el intent que nos lleva al layout correspondiente
 
                     })
-                    .setNegativeButton("No", (dialog, id) -> dialog.dismiss()); //Botones del dialogo que salta
+                    .setNegativeButton(R.string.not, (dialog, id) -> dialog.dismiss()); //Botones del dialogo que salta
             AlertDialog dialog = builder.create();
             dialog.show();//Importante para que se muestre
         }));

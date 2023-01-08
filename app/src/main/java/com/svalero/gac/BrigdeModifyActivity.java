@@ -107,9 +107,9 @@ public class BrigdeModifyActivity extends AppCompatActivity {
         try {
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this); //le pasamos el contexto donde estamos
-            builder.setMessage("¿Seguro que quieres modificar")
-                    .setTitle("Modificar Puente")
-                    .setPositiveButton("Si", (dialog, id) -> { //Añadimos los botones
+            builder.setMessage(R.string.do_you_want_to_modify)
+                    .setTitle(R.string.modify_brigde)
+                    .setPositiveButton(R.string.yes, (dialog, id) -> { //Añadimos los botones
                         final AppDatabase dbD = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME) //Instanciamos la BBDD -< PAsamos el contexto para saber donde estamos
                                 .allowMainThreadQueries().build();
 
@@ -119,12 +119,12 @@ public class BrigdeModifyActivity extends AppCompatActivity {
                         intent.putExtra("brigde_id", brigde.getBrigde_id());
                         this.startActivity(intent); //lanzamos el intent que nos lleva al layout correspondiente
                     })
-                    .setNegativeButton("No", (dialog, id) -> dialog.dismiss()); //Botones del dialogo que salta
+                    .setNegativeButton(R.string.not, (dialog, id) -> dialog.dismiss()); //Botones del dialogo que salta
             AlertDialog dialog = builder.create();
             dialog.show();//Importante para que se muestre
 
         } catch (SQLiteConstraintException sce) {
-            Snackbar.make(etName, "Ha ocurrido un error. Comprueba que el dato es válido", BaseTransientBottomBar.LENGTH_LONG);
+            Snackbar.make(etName, R.string.brigde_modify_error, BaseTransientBottomBar.LENGTH_LONG);
         }
     }
 
