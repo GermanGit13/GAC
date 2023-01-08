@@ -2,6 +2,8 @@ package com.svalero.gac.domain;
 
 import static androidx.room.ForeignKey.SET_NULL;
 
+import android.graphics.Bitmap;
+
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -35,14 +37,14 @@ public class Inspection {
     private boolean condition;
     @ColumnInfo
     private String Comment;
-//    @ColumnInfo
-//    private String imagePath = "";
+    @ColumnInfo
+    private String imagePath = "";
 
     public Inspection() {
 
     }
 
-    public Inspection(long inspection_id, long inspectorCreatorId, long bridgeInspId, boolean vain, boolean stapes, int damage, boolean platformIns, boolean condition, String comment) {
+    public Inspection(long inspection_id, long inspectorCreatorId, long bridgeInspId, boolean vain, boolean stapes, int damage, boolean platformIns, boolean condition, String comment, String imagePath) {
         this.inspection_id = inspection_id;
         this.inspectorCreatorId = inspectorCreatorId;
         this.bridgeInspId = bridgeInspId;
@@ -54,7 +56,7 @@ public class Inspection {
         this.Comment = comment;
     }
 
-    public Inspection(long inspectorCreatorId, long bridgeInspId, boolean vain, boolean stapes, int damage, boolean platformIns, boolean condition, String comment) {
+    public Inspection(long inspectorCreatorId, long bridgeInspId, boolean vain, boolean stapes, int damage, boolean platformIns, boolean condition, String comment, String imagePath) {
         this.inspectorCreatorId = inspectorCreatorId;
         this.bridgeInspId = bridgeInspId;
         this.vain = vain;
@@ -109,11 +111,11 @@ public class Inspection {
         return damage;
     }
 
-    public String getDamageString() {
-
-        String damageString = String.valueOf(damage);
-        return damageString;
-    }
+//    public String getDamageString() {
+//
+//        String damageString = String.valueOf(damage);
+//        return damageString;
+//    }
 
     public void setDamage(int damage) {
         this.damage = damage;
@@ -141,5 +143,13 @@ public class Inspection {
 
     public void setComment(String comment) {
         Comment = comment;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 }

@@ -4,13 +4,17 @@ import static com.svalero.gac.db.Constants.DATABASE_NAME;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 import androidx.room.Room;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,6 +30,9 @@ import com.svalero.gac.db.AppDatabase;
 import com.svalero.gac.domain.Brigde;
 import com.svalero.gac.domain.Inspection;
 
+import java.io.File;
+import java.io.IOException;
+
 public class InspectionRegisterActivity extends AppCompatActivity {
 
     private long inspectionId; //Para guardarnos el id de Inspection
@@ -36,6 +43,7 @@ public class InspectionRegisterActivity extends AppCompatActivity {
     Button btnCamera; //Boton que al pulsar abrira la camara en el layout de registrar inspeccion
     ImageView imageView; //Para que aparezca la foto aquí
     static final int REQUEST_IMAGE_CAPTURE = 1;
+    String pathImage; //Para almacenar la ruta de la imagen
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -103,7 +111,7 @@ public class InspectionRegisterActivity extends AppCompatActivity {
         boolean condition = cbCondition.isChecked();
         String comment = etComment.getText().toString();
 
-        Inspection inspection = new Inspection(brigdeId, inspectorId, vain, stapes, damage, platform, condition, comment); //Creamos una inspeccion con los datos
+        Inspection inspection = new Inspection(brigdeId, inspectorId, vain, stapes, damage, platform, condition, comment, pathImage); //Creamos una inspeccion con los datos
         final AppDatabase db = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME) //Instanciamos la BBDD, la creamos cada vez que necesitemos meter algo en BBDD
                 .allowMainThreadQueries().build();
         //Controlamos que la tarea no esta ya creada en su campo primary key, controlando la excepcion
@@ -151,9 +159,22 @@ public class InspectionRegisterActivity extends AppCompatActivity {
      * Metodo para abrir la camara mediante un intent
      */
     private void camera() {
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE); //
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+
+            File imageFile = null; //Creamos un fichero y lo declaramos a null
+
+            try {
+                imageFile = saveImage(); //Le pasamos el metodo de salvar fichero al fichero creado antes
+            } catch (IOException ioe) {
+                ioe.printStackTrace();
+            }
+
+            if (imageFile !=null) { //Para verificar que creo el archivo temporal
+                Uri photoUri = FileProvider.getUriForFile(this, "com.svalero.gac.fileprovider", imageFile); //El contexto y el package de la app y el fichero de la imagen
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
+                startActivityForResult(intent, REQUEST_IMAGE_CAPTURE); //
+            }
         }
     }
 
@@ -166,8 +187,9 @@ public class InspectionRegisterActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            //Bundle extras = data.getExtras();
+            //Bitmap imageBitmap = (Bitmap) extras.get("data");
+            Bitmap imageBitmap = BitmapFactory.decodeFile(pathImage); //Le indicamos que archivo hay que decodificar
             imageView.setImageBitmap(imageBitmap);
         }
     }
@@ -208,4 +230,16 @@ public class InspectionRegisterActivity extends AppCompatActivity {
         return false;
     }
 
+    /**
+     * Método para guardar las fotos creadas
+     * @return
+     */
+    private File saveImage() throws IOException {
+        String nameImage = "foto_" ; //Para asignarle un nombre a la foto
+        File directory = getExternalFilesDir(Environment.DIRECTORY_PICTURES); //donde vamos a guardar las imagenes
+        File imageTemp = File.createTempFile(nameImage, "jpeg", directory); //Para salvar el archivo temporal, nombre de la foto, extension y directorio donde ira
+
+        pathImage = imageTemp.getAbsolutePath(); //guardamos la ruta absoluta de la imagen
+        return imageTemp;
+    }
 }

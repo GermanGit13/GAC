@@ -2,10 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Permisos de escritura y permiso para usar la cámara-->
-    <uses-feature android:name="android.hardware.camera"
-        android:required="true"></uses-feature>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <!-- Permisos de escritura y permiso para usar la cámara -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
 
     <application
         android:allowBackup="true"
@@ -17,6 +21,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GAC"
         tools:targetApi="31">
+        <meta-data
+            android:name="com.google.android.actions"
+            android:resource="@xml/file_paths" />
+        <!-- Agregamos provider y los permisos al package -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.svalero.gac.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
         <activity
             android:name=".InspectionAllActivity"
             android:exported="false">

@@ -5,10 +5,12 @@ import static com.svalero.gac.db.Constants.DATABASE_NAME;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -85,6 +87,7 @@ public class InspectionAdapter extends RecyclerView.Adapter<InspectionAdapter.In
         holder.inspectionBrigdeName.setText(brigde.getName());
         holder.inspectionInspectorName.setText(inspector.getName());
         holder.inspectionComment.setText(inspectionList.get(position).getComment());
+        holder.imageInspection.setImageURI(Uri.parse(inspectionList.get(position).getImagePath()));
     }
 
     /**
@@ -105,6 +108,7 @@ public class InspectionAdapter extends RecyclerView.Adapter<InspectionAdapter.In
         public TextView inspectionBrigdeName;
         public TextView inspectionInspectorName;
         public TextView inspectionComment;
+        public ImageView imageInspection;
         public Button detailsInspectionButton;
         public Button deleteInspectionButton;
 
@@ -122,6 +126,7 @@ public class InspectionAdapter extends RecyclerView.Adapter<InspectionAdapter.In
             inspectionBrigdeName = view.findViewById(R.id.it_inspection_brigdename);
             inspectionInspectorName = view.findViewById(R.id.it_inspection_inspectorname);
             inspectionComment = view.findViewById(R.id.it_inspectioncomment);
+            imageInspection = view.findViewById(R.id.imv_inspection_details);
             deleteInspectionButton = view.findViewById(R.id.it_delete_inspection_button);
             detailsInspectionButton = view.findViewById(R.id.it_details_inspection_button);
 
