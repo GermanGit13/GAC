@@ -8,11 +8,6 @@
         android:title="@string/ad_inspector"
         app:showAsAction="always" />
     <item
-        android:id="@+id/register_build"
-        android:icon="@drawable/puente"
-        android:title="@string/add_brigde"
-        app:showAsAction="always" />
-    <item
         android:id="@+id/view_map"
         android:icon="@android:drawable/ic_dialog_map"
         android:title="Ver Mapa"

@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Nombre"
+            android:hint="@string/name"
             android:inputType="textPersonName" />
 
         <EditText
@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Apellidos"
+            android:hint="@string/surname"
             android:inputType="textPersonName"
             android:minHeight="48dp" />
 
@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Número de licencia"
+            android:hint="@string/number_license"
             android:inputType="textPersonName"
             android:minHeight="48dp" />
 
@@ -46,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="DNI"
+            android:hint="@string/dni"
             android:inputType="textPersonName"
             android:minHeight="48dp" />
 
@@ -55,7 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Compañia"
+            android:hint="@string/company"
             android:inputType="textPersonName"
             android:minHeight="48dp" />
 
@@ -80,7 +80,7 @@
             android:layout_weight="1"
             android:onClick="modifyButtonInspector"
             android:padding="5dp"
-            android:text="Guardar"
+            android:text="@string/save"
             app:icon="@android:drawable/ic_menu_save" />
 
         <Button
@@ -90,7 +90,7 @@
             android:layout_weight="1"
             android:onClick="goBackButtonModifyInspector"
             android:padding="5dp"
-            android:text="Cancelar"
+            android:text="@string/cancel"
             app:icon="@android:drawable/ic_menu_set_as" />
 
     </LinearLayout>

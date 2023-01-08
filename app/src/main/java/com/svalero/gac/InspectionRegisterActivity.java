@@ -225,6 +225,13 @@ public class InspectionRegisterActivity extends AppCompatActivity {
             Intent intent    = new Intent(this, InspectorRegisterActivity.class);
             startActivity(intent);
             return true;
+        } else if (item.getItemId() == R.id.go_init) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            return true;
+        } else if (item.getItemId() == R.id.ab_back) {
+            onBackPressed();
+            return true;
         }
 
         return false;
@@ -235,7 +242,7 @@ public class InspectionRegisterActivity extends AppCompatActivity {
      * @return
      */
     private File saveImage() throws IOException {
-        String nameImage = getString(R.string.photo) ; //Para asignarle un nombre a la foto
+        String nameImage = getString(R.string.photo_) ; //Para asignarle un nombre a la foto
         File directory = getExternalFilesDir(Environment.DIRECTORY_PICTURES); //donde vamos a guardar las imagenes
         File imageTemp = File.createTempFile(nameImage, getString(R.string.jpeg), directory); //Para salvar el archivo temporal, nombre de la foto, extension y directorio donde ira
 

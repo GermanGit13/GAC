@@ -46,7 +46,7 @@
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:padding="5dp"
-            android:text="Detalles"
+            android:text="@string/details"
             android:textSize="12sp"
             app:icon="@drawable/list" />
 
@@ -57,7 +57,7 @@
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:padding="5dp"
-            android:text="Borrar"
+            android:text="@string/delete"
             android:textSize="12sp"
             app:icon="@drawable/ic_delete_forever" />
 

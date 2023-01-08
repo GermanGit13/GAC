@@ -22,11 +22,11 @@
             android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:text="Puente:" />
+            android:text="@string/brigde" />
 
         <TextView
             android:id="@+id/tv_brige_id_add_inspection"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
@@ -48,7 +48,7 @@
             android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:text="Id Inspector:" />
+            android:text="@string/id_inspector" />
 
         <EditText
             android:id="@+id/et_inspection_inspector_id"
@@ -73,7 +73,7 @@
             android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:text="Vano" />
+            android:text="@string/vain" />
 
         <CheckBox
             android:id="@+id/cb_checkBox_vain"
@@ -98,7 +98,7 @@
             android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:text="Estribo" />
+            android:text="@string/stape" />
 
         <CheckBox
             android:id="@+id/cb_checkBox_stapes"
@@ -121,7 +121,7 @@
             android:id="@+id/tv_inspection_damage"
             android:layout_width="125dp"
             android:layout_height="wrap_content"
-            android:text="Daño:" />
+            android:text="@string/damage" />
 
         <EditText
             android:id="@+id/et_inspection_damage"
@@ -145,7 +145,7 @@
             android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:text="Plataforma" />
+            android:text="@string/platform" />
 
         <CheckBox
             android:id="@+id/cb_checkBox_platform"
@@ -170,7 +170,7 @@
             android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:text="Favorable" />
+            android:text="@string/positive" />
 
         <CheckBox
             android:id="@+id/cb_checkBox_condition"
@@ -193,7 +193,7 @@
             android:id="@+id/tv_inspection_comment"
             android:layout_width="125dp"
             android:layout_height="wrap_content"
-            android:text="Comentarios:" />
+            android:text="@string/comment" />
 
         <EditText
             android:id="@+id/et_inspection_comment"
@@ -230,7 +230,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="saveButtonInspection"
-            android:text="Guardar"
+            android:text="@string/save"
             android:textSize="10sp"
             app:icon="@drawable/save" />
 
@@ -239,7 +239,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Foto"
+            android:text="@string/photo"
             android:textSize="10sp"
             app:icon="@drawable/camera_24" />
 
@@ -249,7 +249,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="goBackButton"
-            android:text="Cancelar"
+            android:text="@string/cancel"
             android:textSize="10sp"
             app:icon="@drawable/cancel" />
 

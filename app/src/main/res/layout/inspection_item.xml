@@ -17,7 +17,7 @@
             android:id="@+id/textView"
             android:layout_width="105dp"
             android:layout_height="wrap_content"
-            android:text="Nombre Puente:" />
+            android:text="@string/name_brigde" />
 
         <TextView
             android:id="@+id/it_inspection_brigdename"
@@ -38,7 +38,7 @@
             android:id="@+id/textView4"
             android:layout_width="105dp"
             android:layout_height="wrap_content"
-            android:text="Inspector :" />
+            android:text="@string/inspector" />
 
         <TextView
             android:id="@+id/it_inspection_inspectorname"
@@ -68,7 +68,7 @@
                 android:id="@+id/textView5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Comentarios:"
+                android:text="@string/comment"
                 android:textAlignment="center" />
 
             <TextView
@@ -94,7 +94,7 @@
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:padding="5dp"
-            android:text="Detalles"
+            android:text="@string/details"
             android:textSize="12sp"
             app:icon="?android:attr/actionModeFindDrawable" />
 
@@ -105,25 +105,25 @@
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:padding="5dp"
-            android:text="Borrar"
+            android:text="@string/delete"
             android:textSize="12sp"
             app:icon="@android:drawable/ic_menu_delete" />
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical">
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_weight="1"-->
+<!--        android:orientation="vertical">-->
 
-        <Button
-            android:id="@+id/inspection_other"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="5dp"
-            android:text="Ya veré que hago"
-            app:icon="@drawable/inspection" />
-    </LinearLayout>
+<!--        <Button-->
+<!--            android:id="@+id/inspection_other"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:padding="5dp"-->
+<!--            android:text="Ya veré que hago"-->
+<!--            app:icon="@drawable/inspection" />-->
+<!--    </LinearLayout>-->
 </LinearLayout>

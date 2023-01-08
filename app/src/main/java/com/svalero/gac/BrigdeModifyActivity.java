@@ -213,7 +213,7 @@ public class BrigdeModifyActivity extends AppCompatActivity {
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.actionbar, menu); //Inflamos el menu
+        getMenuInflater().inflate(R.menu.actionbar_brigde_all, menu); //Inflamos el menu
         return true;
     }
 
@@ -232,6 +232,13 @@ public class BrigdeModifyActivity extends AppCompatActivity {
         else if (item.getItemId() == R.id.view_map) { //Para cuando pulsan en la boton del mapa en el actionbar
             Intent intent = new Intent(this, MapsActivity.class); //donde nos manda al pinchar sobre el boton mapas en el action bar
             startActivity(intent);
+            return true;
+        } else if (item.getItemId() == R.id.go_init) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            return true;
+        } else if (item.getItemId() == R.id.ab_back) {
+            onBackPressed();
             return true;
         }
 

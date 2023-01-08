@@ -148,6 +148,13 @@ public class MainActivity extends AppCompatActivity {
             Intent intent    = new Intent(this, InspectorRegisterActivity.class);
             startActivity(intent);
             return true;
+        } else if (item.getItemId() == R.id.go_init) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            return true;
+        } else if (item.getItemId() == R.id.ab_back) {
+            onBackPressed();
+            return true;
         }
 
         return false;
