@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#03A9F4"
             android:padding="5dp"
-            android:text="Name:" />
+            android:text="@string/name" />
 
         <TextView
             android:id="@+id/tv_inspector_name_modify"
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#03A9F4"
             android:padding="5dp"
-            android:text="Apellidos:" />
+            android:text="@string/surname" />
 
         <TextView
             android:id="@+id/tv_inspector_surname_modify"
@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#03A9F4"
             android:padding="5dp"
-            android:text="Número Licencia:" />
+            android:text="@string/number_license" />
 
         <TextView
             android:id="@+id/tv_inspector_number_license_modify"
@@ -90,7 +90,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#03A9F4"
             android:padding="5dp"
-            android:text="DNI:" />
+            android:text="@string/dni" />
 
         <TextView
             android:id="@+id/tv_inspector_dni_modify"
@@ -113,7 +113,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#03A9F4"
             android:padding="5dp"
-            android:text="Compañia:" />
+            android:text="@string/company" />
 
         <TextView
             android:id="@+id/tv_inspector_company_modify"

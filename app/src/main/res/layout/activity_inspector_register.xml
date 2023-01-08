@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="FORMULARIO ALTA INSPECTOR"
+        android:text="@string/inspector_registration_form"
         android:textAlignment="center"
         android:textColor="#2196F3"
         android:textColorHint="#03A9F4"
@@ -26,7 +26,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout15">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imv_inspection_add"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:srcCompat="@tools:sample/avatars" />
@@ -46,7 +46,7 @@
             android:id="@+id/tv_inspector_number_license"
             android:layout_width="125dp"
             android:layout_height="wrap_content"
-            android:text="Nº Licencia:" />
+            android:text="@string/number_license" />
 
         <EditText
             android:id="@+id/et_inspector_number_license"
@@ -68,13 +68,14 @@
             android:id="@+id/tv_inspector_company"
             android:layout_width="125dp"
             android:layout_height="wrap_content"
-            android:text="Compañia:" />
+            android:text="@string/company" />
 
         <EditText
             android:id="@+id/et_inspector_company"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            tools:ignore="TouchTargetSizeCheck" />
     </LinearLayout>
 
     <LinearLayout
@@ -92,7 +93,7 @@
             android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:text="Apellidos:" />
+            android:text="@string/surname" />
 
         <EditText
             android:id="@+id/et_inspector_surname"
@@ -115,13 +116,14 @@
             android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:text="Nombre:" />
+            android:text="@string/name" />
 
         <EditText
             android:id="@+id/et_inspector_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            tools:ignore="TouchTargetSizeCheck" />
     </LinearLayout>
 
     <LinearLayout
@@ -137,7 +139,7 @@
             android:id="@+id/tv_inspector_dni"
             android:layout_width="125dp"
             android:layout_height="wrap_content"
-            android:text="DNI:" />
+            android:text="@string/dni" />
 
         <EditText
             android:id="@+id/et_inspector_dni"
@@ -158,7 +160,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="saveButtonInspector"
-            android:text="Guardar"
+            android:text="@string/save"
             app:icon="@drawable/save" />
 
         <Button
@@ -167,7 +169,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="goBackButton"
-            android:text="Cancelar"
+            android:text="@string/cancel"
             app:icon="@drawable/cancel" />
 
     </LinearLayout>

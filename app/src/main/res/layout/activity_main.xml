@@ -38,13 +38,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Listado de Puentes" />
+                android:text="@string/list_of_brigde" />
 
             <Button
                 android:id="@+id/add_brigde_main_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Añadir" />
+                android:text="@string/add" />
 
         </TableRow>
 
@@ -56,13 +56,13 @@
                 android:id="@+id/list_inspector_main_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Listado de Inspectores" />
+                android:text="@string/list_of_inspector" />
 
             <Button
                 android:id="@+id/add_inspector_main_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Añadir" />
+                android:text="@string/add" />
         </TableRow>
 
         <TableRow
@@ -73,13 +73,8 @@
                 android:id="@+id/list_inspection_main_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Listado de Inspecciones" />
+                android:text="@string/list_of_inspection" />
 
-            <Button
-                android:id="@+id/add_inspection_main_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Button" />
         </TableRow>
 
         <TableRow

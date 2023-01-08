@@ -101,7 +101,7 @@ public class RegisterBrigdeActivity extends AppCompatActivity {
             etPlatform.setText("");
             etName.requestFocus(); //recuperamos el foco
         } catch (SQLiteConstraintException sce) {
-            Snackbar.make(etName, "Ha ocurrido un error. Comprueba que el dato es válido", BaseTransientBottomBar.LENGTH_LONG);
+            Snackbar.make(etName, R.string.brigde_error, BaseTransientBottomBar.LENGTH_LONG);
         }
 
     }
@@ -169,6 +169,17 @@ public class RegisterBrigdeActivity extends AppCompatActivity {
         else if (item.getItemId() == R.id.view_map) { //Para cuando pulsan en la boton del mapa en el actionbar
             Intent intent = new Intent(this, MapsActivity.class); //donde nos manda al pinchar sobre el boton mapas en el action bar
             startActivity(intent);
+            return true;
+        } else if (item.getItemId() == R.id.register_inspector) {
+            Intent intent    = new Intent(this, InspectorRegisterActivity.class);
+            startActivity(intent);
+            return true;
+        } else if (item.getItemId() == R.id.go_init) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            return true;
+        } else if (item.getItemId() == R.id.ab_back) {
+            onBackPressed();
             return true;
         }
 

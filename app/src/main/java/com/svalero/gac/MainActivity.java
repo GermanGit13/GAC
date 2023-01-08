@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     Button addBrige;
     Button listInspector;
     Button addInspector;
+    Button listInspection;
+    Button addInspection;
 
 
     /**
@@ -66,6 +68,17 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, InspectorRegisterActivity.class); //donde nos manda al pinchar sobre el boton mapas en el action bar
             startActivity(intent);
         });
+
+        listInspection = findViewById(R.id.list_inspection_main_button);
+        listInspection.setOnClickListener(view -> {
+            Intent intent = new Intent(this, InspectionAllActivity.class); //donde nos manda al pinchar sobre el boton mapas en el action bar
+            startActivity(intent);
+        });
+
+//        addInspection.setOnClickListener(view -> {
+//            Intent intent = new Intent(this, InspectionRegisterActivity.class); //donde nos manda al pinchar sobre el boton mapas en el action bar
+//            startActivity(intent);
+//        });
 
 //        /**
 //         * Pauta generales para trabajar con recyclerView. Para que se ajuste al layout y nos haga caso
@@ -134,6 +147,13 @@ public class MainActivity extends AppCompatActivity {
         } else if (item.getItemId() == R.id.register_inspector) {
             Intent intent    = new Intent(this, InspectorRegisterActivity.class);
             startActivity(intent);
+            return true;
+        } else if (item.getItemId() == R.id.go_init) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            return true;
+        } else if (item.getItemId() == R.id.ab_back) {
+            onBackPressed();
             return true;
         }
 

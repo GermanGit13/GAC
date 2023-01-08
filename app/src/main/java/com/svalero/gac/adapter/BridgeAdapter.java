@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import com.svalero.gac.BrigdeDetailsActivity;
+import com.svalero.gac.InspectionRegisterActivity;
 import com.svalero.gac.R;
 import com.svalero.gac.db.AppDatabase;
 import com.svalero.gac.domain.Brigde;
@@ -43,12 +44,6 @@ public class BridgeAdapter extends RecyclerView.Adapter<BridgeAdapter.BrigdeHold
         this.context = context; //El contexto
         this.bridgeList = dataList; //La lista de los puentes
     }
-
-//    public BridgeAdapter(Context context, Brigde brigde) {
-//        this.context = context; //El contexto
-//        this.brigde = brigde;
-//    }
-
 
     /**
      * Metodo con el que Android va a inflar, va a crear cada estructura del layout donde irán los datos de cada puente.
@@ -100,7 +95,7 @@ public class BridgeAdapter extends RecyclerView.Adapter<BridgeAdapter.BrigdeHold
         public Button detailsBrigdeButton;
         public Button modifyBrigdeButton;
         public Button deleteBrigdeButton;
-        public Button mapBrigdeButton;
+        public Button inspectionBrigdeButton;
         public View parentView; //vista padre - como el recyclerView
 
 
@@ -119,7 +114,7 @@ public class BridgeAdapter extends RecyclerView.Adapter<BridgeAdapter.BrigdeHold
             detailsBrigdeButton = view.findViewById(R.id.details_brigde_button);
 //            modifyBrigdeButton = view.findViewById(R.id.modify_brigde_button); //De momento en está vista no voy a modificar
             deleteBrigdeButton = view.findViewById(R.id.delete_brigde_button);
-            mapBrigdeButton = view.findViewById(R.id.map_brigde_button);
+            inspectionBrigdeButton = view.findViewById(R.id.inspection_brigde_button);
 
             //Para decirle que hace el boton cuando pulsamos sobre el
             // Ver detalles de un puente
@@ -128,8 +123,8 @@ public class BridgeAdapter extends RecyclerView.Adapter<BridgeAdapter.BrigdeHold
 //            modifyBrigdeButton.setOnClickListener(v -> modifyBrigdeButton(getAdapterPosition()));
             // Eliminar un puente
             deleteBrigdeButton.setOnClickListener(v -> deleteBrigdeButton(getAdapterPosition()));
-            //Ver en el mapa el puente
-            mapBrigdeButton.setOnClickListener(v -> mapBrigdeButton(getAdapterPosition()));
+            //Añadir Inspeccion
+            inspectionBrigdeButton.setOnClickListener(v -> inspectionBrigdeButton(getAdapterPosition()));
         }
 
         /**
@@ -139,6 +134,18 @@ public class BridgeAdapter extends RecyclerView.Adapter<BridgeAdapter.BrigdeHold
             Brigde brigde = bridgeList.get(position); //recuperamos el puente por su posicion
 
             Intent intent = new Intent(context, BrigdeDetailsActivity.class); //Lo pasamos al activity para pintar el detalle de la tarea
+            intent.putExtra("brigde_id", brigde.getBrigde_id()); //Recogemos el id
+            context.startActivity(intent); //lanzamos el intent que nos lleva al layout correspondiente
+
+        }
+
+        /**
+         * Métodos de los botones del layout para recoger el id y registrar una inspection
+         */
+        private void inspectionBrigdeButton(int position) {
+            Brigde brigde = bridgeList.get(position); //recuperamos el puente por su posicion
+
+            Intent intent = new Intent(context, InspectionRegisterActivity.class); //Lo pasamos al activity para pintar el detalle de la tarea
             intent.putExtra("brigde_id", brigde.getBrigde_id()); //Recogemos el id
             context.startActivity(intent); //lanzamos el intent que nos lleva al layout correspondiente
 
@@ -157,9 +164,9 @@ public class BridgeAdapter extends RecyclerView.Adapter<BridgeAdapter.BrigdeHold
              * Dialogo para pregunta antes de si quiere borrar -> https://developer.android.com/guide/topics/ui/dialogs?hl=es-419
              */
             AlertDialog.Builder builder = new AlertDialog.Builder(context); //le pasamos el contexto donde estamos
-            builder.setMessage("¿Seguro que quieres eliminar")
-                    .setTitle("Eliminar Puente")
-                    .setPositiveButton("Si", (dialog, id) -> { //Añadimos los botones
+            builder.setMessage(R.string.do_you_want_to_detele)
+                    .setTitle(R.string.delete_brigde)
+                    .setPositiveButton(R.string.yes, (dialog, id) -> { //Añadimos los botones
                         final AppDatabase db = Room.databaseBuilder(context, AppDatabase.class, DATABASE_NAME) //Instanciamos la BBDD -< PAsamos el contexto para saber donde estamos
                                 .allowMainThreadQueries().build();
                         Brigde brigde = bridgeList.get(position); //Recuperamos el objeto po su posicion para pasarselo al delete
@@ -168,7 +175,7 @@ public class BridgeAdapter extends RecyclerView.Adapter<BridgeAdapter.BrigdeHold
                         bridgeList.remove(position); //Borra solo de la lista que muestra no de la BBDD
                         notifyItemRemoved(position); // Para notificar a Android que hemos borrado algo y refrescar la lista
                     })
-                    .setNegativeButton("No", (dialog, id) -> dialog.dismiss()); //Botones del dialogo que salta
+                    .setNegativeButton(R.string.not, (dialog, id) -> dialog.dismiss()); //Botones del dialogo que salta
             AlertDialog dialog = builder.create();
             dialog.show();//Importante para que se muestre
         }

@@ -63,9 +63,9 @@ public class InspectorModifyActivity extends AppCompatActivity {
         //Controlamos que la tarea no esta ya creada en su campo primary key, controlando la excepcion
         try {
             AlertDialog.Builder builder = new AlertDialog.Builder(this); //le pasamos el contexto donde estamos
-            builder.setMessage("¿Seguro que quieres modificar")
-                    .setTitle("Modificar Inspector")
-                    .setPositiveButton("Si", (dialog, id) -> { //Añadimos los botones
+            builder.setMessage(R.string.do_you_want_to_modify)
+                    .setTitle(R.string.modify_inspector)
+                    .setPositiveButton(R.string.yes, (dialog, id) -> { //Añadimos los botones
                         final AppDatabase dbD = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME) //Instanciamos la BBDD -< PAsamos el contexto para saber donde estamos
                                 .allowMainThreadQueries().build();
 
@@ -75,7 +75,7 @@ public class InspectorModifyActivity extends AppCompatActivity {
                         intent.putExtra("inspector_id", inspector.getInspector_id());
                         this.startActivity(intent); //lanzamos el intent que nos lleva al layout correspondiente
                     })
-                    .setNegativeButton("No", (dialog, id) -> dialog.dismiss()); //Botones del dialogo que salta
+                    .setNegativeButton(R.string.not, (dialog, id) -> dialog.dismiss()); //Botones del dialogo que salta
             AlertDialog dialog = builder.create();
             dialog.show();//Importante para que se muestre
 
@@ -113,9 +113,14 @@ public class InspectorModifyActivity extends AppCompatActivity {
      * @param menu
      * @return
      */
+    /**
+     * PAra crear el menu (el actionBar)
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.actionbar, menu); //Inflamos el menu
+        getMenuInflater().inflate(R.menu.actionbar_inspector_all, menu); //Inflamos el menu
         return true;
     }
 
@@ -126,8 +131,8 @@ public class InspectorModifyActivity extends AppCompatActivity {
      */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.register_build) { //Evaluar a que opcion hemos pichado
-            Intent intent = new Intent(this, RegisterBrigdeActivity.class); //donde nos manda al pinchar sobre el boton + en el action bar
+        if (item.getItemId() == R.id.register_inspector) {
+            Intent intent    = new Intent(this, InspectorRegisterActivity.class);
             startActivity(intent);
             return true;
         }
@@ -135,9 +140,12 @@ public class InspectorModifyActivity extends AppCompatActivity {
             Intent intent = new Intent(this, MapsActivity.class); //donde nos manda al pinchar sobre el boton mapas en el action bar
             startActivity(intent);
             return true;
-        } else if (item.getItemId() == R.id.register_inspector) {
-            Intent intent    = new Intent(this, InspectorRegisterActivity.class);
+        } else if (item.getItemId() == R.id.go_init) {
+            Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
+            return true;
+        } else if (item.getItemId() == R.id.ab_back) {
+            onBackPressed();
             return true;
         }
 

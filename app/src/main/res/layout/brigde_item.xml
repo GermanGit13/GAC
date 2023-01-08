@@ -33,7 +33,7 @@
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:padding="5dp"
-            android:text="Detalles"
+            android:text="@string/details"
             android:textSize="12sp"
             app:icon="?android:attr/actionModeFindDrawable" />
 
@@ -44,7 +44,7 @@
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:padding="5dp"
-            android:text="Borrar"
+            android:text="@string/delete"
             android:textSize="12sp"
             app:icon="@android:drawable/ic_menu_delete" />
 
@@ -57,13 +57,13 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/map_brigde_button"
+            android:id="@+id/inspection_brigde_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="5dp"
-            android:text="Ver en Mapa"
-            app:icon="@android:drawable/ic_dialog_map" />
+            android:text="@string/register_of_inspection"
+            app:icon="@drawable/inspection" />
     </LinearLayout>
 
 </LinearLayout>

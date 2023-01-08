@@ -8,35 +8,36 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.svalero.gac.adapter.BridgeAdapter;
-import com.svalero.gac.adapter.InspectorAdapter;
+import com.svalero.gac.adapter.InspectionAdapter;
 import com.svalero.gac.db.AppDatabase;
-import com.svalero.gac.domain.Inspector;
+import com.svalero.gac.domain.Inspection;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class InspectorAllActivity extends AppCompatActivity {
+public class InspectionAllActivity extends AppCompatActivity {
 
-    private List<Inspector> inspectorList; //Lista de inspectores para obtener los todos los inspectores de la BBDD
-    private InspectorAdapter adapter; //Para poder conectar con la BBDD
+    private List<Inspection> inspectionList; //Lista de inspecciones para obtener los todos las inspecciones de la BBDD
+    private InspectionAdapter adapter; //Para poder conectar con la BBDD
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_inspector_all);
+        setContentView(R.layout.activity_inspection_all);
 
-        inspectorList = new ArrayList<>();//Instanciamos la lista a vacio la seguimos usando como referencia pero la llenamos con la BBDD
+        inspectionList = new ArrayList<>();//Instanciamos la lista a vacio la seguimos usando como referencia pero la llenamos con la BBDD
 
         /**
          * Pauta generales para trabajar con recyclerView. Para que se ajuste al layout y nos haga caso
          */
-        RecyclerView recyclerView = findViewById(R.id.rc_inspector_all); //Nos hacemos con el RecyclerView que en el layout activity_main.xml le hemos llamado brigde_list
+        RecyclerView recyclerView = findViewById(R.id.rc_inspection_all); //Nos hacemos con el RecyclerView que en el layout activity_inspection_all.xml le hemos llamado rc_inspection_all
         recyclerView.setHasFixedSize(true); //para decirle que tiene un tamaño fijo y ocupe xtodo lo que tiene asigando
         LinearLayoutManager layoutManager = new LinearLayoutManager(this); //Para decirle al activity que lo va a gestionar un layoutManager
         recyclerView.setLayoutManager(layoutManager); // para que el reciclerView se ciña al layoutManager
@@ -44,7 +45,7 @@ public class InspectorAllActivity extends AppCompatActivity {
          * FIN Pauta generales para trabajar con recyclerView
          */
 
-        adapter = new InspectorAdapter(this, inspectorList);  //creamos el adapter y le pasamos la vista actual y la lista de puentes
+        adapter = new InspectionAdapter(this, inspectionList);  //creamos el adapter y le pasamos la vista actual y la lista de puentes
         recyclerView.setAdapter(adapter); //el adaptador que sabe como poblar de datos la lista en android
     }
 
@@ -65,8 +66,8 @@ public class InspectorAllActivity extends AppCompatActivity {
         final AppDatabase db = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME)
                 .allowMainThreadQueries().build();
 
-        inspectorList.clear(); //Vaciamos la taskList por si tuviera algo
-        inspectorList.addAll(db.inspectorDao().getAll()); //Añadimos xtodo lo que la BBDD nos devuelve
+        inspectionList.clear(); //Vaciamos la taskList por si tuviera algo
+        inspectionList.addAll(db.inspectionDao().getAll()); //Añadimos xtodo lo que la BBDD nos devuelve
         adapter.notifyDataSetChanged(); //Para que actualice desde la BBDD
     }
 
@@ -77,7 +78,7 @@ public class InspectorAllActivity extends AppCompatActivity {
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.actionbar_inspector_all, menu); //Inflamos el menu
+        getMenuInflater().inflate(R.menu.actionbar, menu); //Inflamos el menu
         return true;
     }
 
@@ -88,13 +89,17 @@ public class InspectorAllActivity extends AppCompatActivity {
      */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.register_inspector) {
-            Intent intent    = new Intent(this, InspectorRegisterActivity.class);
+        if (item.getItemId() == R.id.register_build) { //Evaluar a que opcion hemos pichado
+            Intent intent = new Intent(this, RegisterBrigdeActivity.class); //donde nos manda al pinchar sobre el boton + en el action bar
             startActivity(intent);
             return true;
         }
         else if (item.getItemId() == R.id.view_map) { //Para cuando pulsan en la boton del mapa en el actionbar
             Intent intent = new Intent(this, MapsActivity.class); //donde nos manda al pinchar sobre el boton mapas en el action bar
+            startActivity(intent);
+            return true;
+        } else if (item.getItemId() == R.id.register_inspector) {
+            Intent intent    = new Intent(this, InspectorRegisterActivity.class);
             startActivity(intent);
             return true;
         } else if (item.getItemId() == R.id.go_init) {
@@ -108,4 +113,5 @@ public class InspectorAllActivity extends AppCompatActivity {
 
         return false;
     }
+
 }

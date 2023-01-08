@@ -3,11 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/register_inspector"
-        android:icon="@drawable/inspector"
-        android:title="@string/ad_inspector"
-        app:showAsAction="always" />
-    <item
         android:id="@+id/register_build"
         android:icon="@drawable/puente"
         android:title="@string/add_brigde"

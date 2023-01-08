@@ -54,7 +54,7 @@ public class InspectorRegisterActivity extends AppCompatActivity {
         try {
             db.inspectorDao().insert(inspector); // Insertamos el objeto dentro de la BBDD
 
-            Snackbar.make(etName, "Inspector creado con éxito", BaseTransientBottomBar.LENGTH_LONG); //etName porque el Snackbar hay que asociarlo algún componente del layout
+            Snackbar.make(etName, R.string.inspector_create_ok, BaseTransientBottomBar.LENGTH_LONG); //etName porque el Snackbar hay que asociarlo algún componente del layout
             etName.setText(""); //Para vaciar las cajas de texto y prepararlas para registrar otra tarea
             etSurname.setText("");
             etNumberLicense.setText("");
@@ -62,7 +62,7 @@ public class InspectorRegisterActivity extends AppCompatActivity {
             etCompany.setText("");
             etName.requestFocus(); //recuperamos el foco
         } catch (SQLiteConstraintException sce) {
-            Snackbar.make(etName, "Ha ocurrido un error. Comprueba que el dato es válido", BaseTransientBottomBar.LENGTH_LONG);
+            Snackbar.make(etName, R.string.inspector_error, BaseTransientBottomBar.LENGTH_LONG);
         }
     }
 
@@ -84,7 +84,7 @@ public class InspectorRegisterActivity extends AppCompatActivity {
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.actionbar, menu); //Inflamos el menu
+        getMenuInflater().inflate(R.menu.actionbar_inspector_all, menu); //Inflamos el menu
         return true;
     }
 
@@ -95,8 +95,8 @@ public class InspectorRegisterActivity extends AppCompatActivity {
      */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.register_build) { //Evaluar a que opcion hemos pichado
-            Intent intent = new Intent(this, RegisterBrigdeActivity.class); //donde nos manda al pinchar sobre el boton + en el action bar
+        if (item.getItemId() == R.id.register_inspector) {
+            Intent intent    = new Intent(this, InspectorRegisterActivity.class);
             startActivity(intent);
             return true;
         }
@@ -104,9 +104,12 @@ public class InspectorRegisterActivity extends AppCompatActivity {
             Intent intent = new Intent(this, MapsActivity.class); //donde nos manda al pinchar sobre el boton mapas en el action bar
             startActivity(intent);
             return true;
-        } else if (item.getItemId() == R.id.register_inspector) {
-            Intent intent    = new Intent(this, InspectorRegisterActivity.class);
+        } else if (item.getItemId() == R.id.go_init) {
+            Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
+            return true;
+        } else if (item.getItemId() == R.id.ab_back) {
+            onBackPressed();
             return true;
         }
 

@@ -61,7 +61,7 @@
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
-                        android:text="Detalles"
+                        android:text="@string/details"
                         android:textSize="10sp"
                         app:icon="@drawable/list" />
 
@@ -70,7 +70,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
-                        android:text="Borrar"
+                        android:text="@string/delete"
                         android:textSize="10sp"
                         app:icon="@drawable/ic_delete_forever" />
                 </LinearLayout>

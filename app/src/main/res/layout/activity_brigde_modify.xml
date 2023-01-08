@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Nombre"
+            android:hint="@string/name"
             android:inputType="textPersonName" />
 
         <EditText
@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Pais"
+            android:hint="@string/country"
             android:inputType="textPersonName" />
 
         <EditText
@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Ciudad"
+            android:hint="@string/city"
             android:inputType="textPersonName" />
 
         <EditText
@@ -44,7 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Año Construcción"
+            android:hint="@string/year_build"
             android:inputType="textPersonName" />
 
         <EditText
@@ -52,7 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Número de Vanos"
+            android:hint="@string/number_vain"
             android:inputType="textPersonName" />
 
         <EditText
@@ -60,7 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Número Estribos"
+            android:hint="@string/number_staples"
             android:inputType="textPersonName" />
 
         <EditText
@@ -68,7 +68,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Plataforma"
+            android:hint="@string/platform"
             android:inputType="textPersonName" />
 
     </LinearLayout>
@@ -90,7 +90,7 @@
             android:layout_weight="1"
             android:onClick="modifyButtonBrigde"
             android:padding="5dp"
-            android:text="Guardar"
+            android:text="@string/save"
             app:icon="@android:drawable/ic_menu_save" />
 
         <Button
@@ -100,7 +100,7 @@
             android:layout_weight="1"
             android:onClick="goBackButtonModify"
             android:padding="5dp"
-            android:text="Cancelar"
+            android:text="@string/cancel"
             app:icon="@android:drawable/ic_menu_set_as" />
 
     </LinearLayout>
