@@ -64,7 +64,7 @@ public class BridgeAllActivity extends AppCompatActivity {
             final AppDatabase db = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME)
                     .allowMainThreadQueries().build();
 
-            brigdeList.clear(); //Vaciamos la taskList por si tuviera algo
+            brigdeList.clear(); //Vaciamos la brigdeList por si tuviera algo
             brigdeList.addAll(db.brigdeDao().getAll()); //Añadimos xtodo lo que la BBDD nos devuelve
             adapter.notifyDataSetChanged(); //Para que actualice desde la BBDD
     }

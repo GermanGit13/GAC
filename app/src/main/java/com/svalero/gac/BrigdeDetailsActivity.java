@@ -24,9 +24,9 @@ public class BrigdeDetailsActivity extends AppCompatActivity {
 
     private BridgeAdapter adapter; //Para poder conectar con la BBDD
 
-    FloatingActionButton fabDelete; //Para borrar desde la vista detalle
-    FloatingActionButton fabModify; //Para modificar desde la vista detalle
-    FloatingActionButton fab_create_inspection; //Para crear una inspección asociada al puente
+    FloatingActionButton fabDelete; //Botón para borrar desde la vista detalle
+    FloatingActionButton fabModify; //Botón para modificar desde la vista detalle
+    FloatingActionButton fab_create_inspection; //Botón para crear una inspección asociada al puente
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +40,6 @@ public class BrigdeDetailsActivity extends AppCompatActivity {
         AtomicReference<Intent> intent = new AtomicReference<>(getIntent());
         //Recuperar el puente por el id
         long brigde_id = getIntent().getLongExtra("brigde_id", 0);
-//        long brigde_id = Long.parseLong(intent.getStringExtra("brideg_id"));
-//        if (brigde_id == null)
-//            return;
 
         //Instanciamos la BBDD
         final AppDatabase db = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME)
@@ -59,7 +56,7 @@ public class BrigdeDetailsActivity extends AppCompatActivity {
             builder.setMessage(R.string.do_you_want_to_detele)
                     .setTitle(R.string.delete_brigde)
                     .setPositiveButton(R.string.yes, (dialog, id) -> { //Añadimos los botones
-                        final AppDatabase dbD = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME) //Instanciamos la BBDD -< PAsamos el contexto para saber donde estamos
+                        final AppDatabase dbD = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME) //Instanciamos la BBDD -> Pasamos el contexto para saber donde estamos
                                 .allowMainThreadQueries().build();
                         dbD.brigdeDao().delete(brigde);
                         brigdeList();
@@ -79,9 +76,8 @@ public class BrigdeDetailsActivity extends AppCompatActivity {
             builder.setMessage(R.string.do_you_want_to_modify)
                     .setTitle(R.string.modify_brigde)
                     .setPositiveButton(R.string.yes, (dialog, id) -> { //Añadimos los botones
-                        final AppDatabase dbD = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME) //Instanciamos la BBDD -< PAsamos el contexto para saber donde estamos
+                        final AppDatabase dbD = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME) //Instanciamos la BBDD -> Pasamos el contexto para saber donde estamos
                                 .allowMainThreadQueries().build();
-//                        Brigde brigde = bridgeList.get(position); //recuperamos el puente por su posicion
 
                         intent.set(new Intent(this, BrigdeModifyActivity.class)); //Lo pasamos al activity para pintar el detalle de la tarea
                         intent.get().putExtra("brigde_id", brigde.getBrigde_id()); //Recogemos el id

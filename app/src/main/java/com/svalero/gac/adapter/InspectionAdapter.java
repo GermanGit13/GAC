@@ -34,7 +34,7 @@ import java.util.List;
  */
 public class InspectionAdapter extends RecyclerView.Adapter<InspectionAdapter.InspectionHolder> {
 
-    private Context context; // Es la activity en la que estamos
+    private Context context;
     private List<Inspection> inspectionList;
     private Inspection inspection;
     private Brigde brigde;
@@ -42,12 +42,12 @@ public class InspectionAdapter extends RecyclerView.Adapter<InspectionAdapter.In
 
     /**
      * 1) Constructor que creamos para pasarle los datos que queremos que pinte
-     *
+     * Contexto y lista de inspecciones
      * @param dataList Lista de inspectores que le pasamos
      */
     public InspectionAdapter(Context context, List<Inspection> dataList) {
-        this.context = context; //El contexto
-        this.inspectionList = dataList; //La lista de las inspecciones
+        this.context = context;
+        this.inspectionList = dataList;
 
     }
 
@@ -62,7 +62,7 @@ public class InspectionAdapter extends RecyclerView.Adapter<InspectionAdapter.In
     @Override
     public InspectionAdapter.InspectionHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.inspection_item, parent, false); // el layout inspector_item para cada inspector
+                .inflate(R.layout.inspection_item, parent, false); // el layout inspector_item para cada inspeccion
         return new InspectionAdapter.InspectionHolder(view); //Creamos un holder para cada una de las estructuras que infla el layout
     }
 
@@ -160,7 +160,7 @@ public class InspectionAdapter extends RecyclerView.Adapter<InspectionAdapter.In
             builder.setMessage(R.string.do_you_want_to_detele)
                     .setTitle(R.string.delete_inspection)
                     .setPositiveButton(R.string.yes, (dialog, id) -> { //Añadimos los botones
-                        final AppDatabase db = Room.databaseBuilder(context, AppDatabase.class, DATABASE_NAME) //Instanciamos la BBDD -< PAsamos el contexto para saber donde estamos
+                        final AppDatabase db = Room.databaseBuilder(context, AppDatabase.class, DATABASE_NAME) //Instanciamos la BBDD -> Pasamos el contexto para saber donde estamos
                                 .allowMainThreadQueries().build();
                         Inspection inspection = inspectionList.get(position); //Recuperamos el objeto po su posicion para pasarselo al delete
                         db.inspectionDao().delete(inspection); //Borramos de la BBDD

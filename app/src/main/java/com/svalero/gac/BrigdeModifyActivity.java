@@ -37,7 +37,7 @@ import com.svalero.gac.domain.Brigde;
 public class BrigdeModifyActivity extends AppCompatActivity {
 
     private MapView brigdeMapModify; //Porque en el layout de registrar Brigde tenemos un mapa
-    private Point point; //Guardamos el point para gestionar la latitu y longuitud
+    private Point point; //Guardamos el point para gestionar la latitud y longuitud
     private PointAnnotationManager pointAnnotationManager; //Para anotar el point así es común para todos
     private long brigdeId; //Para guardarnos el id de Brigde a modificar
 
@@ -105,7 +105,6 @@ public class BrigdeModifyActivity extends AppCompatActivity {
 
         //Controlamos que la tarea no esta ya creada en su campo primary key, controlando la excepcion
         try {
-
             AlertDialog.Builder builder = new AlertDialog.Builder(this); //le pasamos el contexto donde estamos
             builder.setMessage(R.string.do_you_want_to_modify)
                     .setTitle(R.string.modify_brigde)

@@ -31,18 +31,18 @@ import java.util.List;
  */
 public class BridgeAdapter extends RecyclerView.Adapter<BridgeAdapter.BrigdeHolder> {
 
-    private Context context; // Es la activity en la que estamos
-    private List<Brigde> bridgeList; //Lista de puentes para pintarlo en el RecyclerView
+    private Context context; // Activity en la que estamos
+    private List<Brigde> bridgeList;
     private Brigde brigde;
 
     /**
      * 1) Constructor que creamos para pasarle los datos que queremos que pinte
-     *
+     * el contexto y la lista de puentes
      * @param dataList Lista de puentes que le pasamos
      */
     public BridgeAdapter(Context context, List<Brigde> dataList) {
-        this.context = context; //El contexto
-        this.bridgeList = dataList; //La lista de los puentes
+        this.context = context;
+        this.bridgeList = dataList;
     }
 
     /**
@@ -56,7 +56,7 @@ public class BridgeAdapter extends RecyclerView.Adapter<BridgeAdapter.BrigdeHold
     @Override
     public BrigdeHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.brigde_item, parent, false); // el layout task_item para cada tarea
+                .inflate(R.layout.brigde_item, parent, false); // el layout brigde_item para cada puente
         return new BrigdeHolder(view); //Creamos un holder para cada una de las estructuras que infla el layout
     }
 
@@ -96,6 +96,7 @@ public class BridgeAdapter extends RecyclerView.Adapter<BridgeAdapter.BrigdeHold
         public Button modifyBrigdeButton;
         public Button deleteBrigdeButton;
         public Button inspectionBrigdeButton;
+
         public View parentView; //vista padre - como el recyclerView
 
 
@@ -143,11 +144,11 @@ public class BridgeAdapter extends RecyclerView.Adapter<BridgeAdapter.BrigdeHold
          * Métodos de los botones del layout para recoger el id y registrar una inspection
          */
         private void inspectionBrigdeButton(int position) {
-            Brigde brigde = bridgeList.get(position); //recuperamos el puente por su posicion
+            Brigde brigde = bridgeList.get(position);
 
-            Intent intent = new Intent(context, InspectionRegisterActivity.class); //Lo pasamos al activity para pintar el detalle de la tarea
-            intent.putExtra("brigde_id", brigde.getBrigde_id()); //Recogemos el id
-            context.startActivity(intent); //lanzamos el intent que nos lleva al layout correspondiente
+            Intent intent = new Intent(context, InspectionRegisterActivity.class);
+            intent.putExtra("brigde_id", brigde.getBrigde_id());
+            context.startActivity(intent);
 
         }
 
@@ -167,7 +168,7 @@ public class BridgeAdapter extends RecyclerView.Adapter<BridgeAdapter.BrigdeHold
             builder.setMessage(R.string.do_you_want_to_detele)
                     .setTitle(R.string.delete_brigde)
                     .setPositiveButton(R.string.yes, (dialog, id) -> { //Añadimos los botones
-                        final AppDatabase db = Room.databaseBuilder(context, AppDatabase.class, DATABASE_NAME) //Instanciamos la BBDD -< PAsamos el contexto para saber donde estamos
+                        final AppDatabase db = Room.databaseBuilder(context, AppDatabase.class, DATABASE_NAME) //Instanciamos la BBDD -< Pasamos el contexto para saber donde estamos
                                 .allowMainThreadQueries().build();
                         Brigde brigde = bridgeList.get(position); //Recuperamos el objeto po su posicion para pasarselo al delete
                         db.brigdeDao().delete(brigde); //Borramos de la BBDD
