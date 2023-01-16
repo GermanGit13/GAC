@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InspectionDetailsActivity">
+
+
+
+<LinearLayout
+android:id="@+id/linearLayout1"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_margin="5dp"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toTopOf="parent">
+
+<TextView
+        android:id="@+id/tv_modify_inspection_brige_id"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="@string/brigde" />
+
+<TextView
+    android:id="@+id/tv_modify_brige_id_add_inspection"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="1" />
+
+
+</LinearLayout>
+
+<LinearLayout
+android:id="@+id/linearLayout2"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_margin="5dp"
+android:orientation="horizontal"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toBottomOf="@+id/linearLayout1">
+
+<TextView
+    android:id="@+id/tv_modify_insp_inspector_id"
+    android:layout_width="125dp"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:text="@string/id_inspector" />
+
+<TextView
+    android:id="@+id/tv_modify_inspection_inspector_id"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:inputType="number" />
+</LinearLayout>
+
+
+<LinearLayout
+android:id="@+id/linearLayout3"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_margin="5dp"
+android:orientation="horizontal"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+<TextView
+    android:id="@+id/tv_modify_checkbox_vain"
+    android:layout_width="125dp"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:text="@string/vain" />
+
+<CheckBox
+    android:id="@+id/cb_modify_checkBox_vain"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:text="CheckBox" />
+</LinearLayout>
+
+<LinearLayout
+android:id="@+id/linearLayout4"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_margin="5dp"
+android:orientation="horizontal"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+<TextView
+    android:id="@+id/tv_modify_checkbox_stapes"
+    android:layout_width="125dp"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:text="@string/stape" />
+
+<CheckBox
+    android:id="@+id/cb_modify_checkBox_stapes"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:text="CheckBox" />
+</LinearLayout>
+
+<LinearLayout
+android:id="@+id/linearLayout5"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_margin="5dp"
+android:orientation="horizontal"
+app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+tools:layout_editor_absoluteX="10dp">
+
+<TextView
+    android:id="@+id/tv_modify_ins_damage"
+    android:layout_width="125dp"
+    android:layout_height="wrap_content"
+    android:text="@string/damage" />
+
+<TextView
+    android:id="@+id/tv_modify_inspection_damage"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:inputType="number" />
+</LinearLayout>
+
+<LinearLayout
+android:id="@+id/linearLayout6"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_margin="5dp"
+android:orientation="horizontal"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
+
+<TextView
+    android:id="@+id/tv_modify_checkbox_platform"
+    android:layout_width="125dp"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:text="@string/platform" />
+
+<CheckBox
+    android:id="@+id/cb_modify_checkBox_platform"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:text="CheckBox" />
+</LinearLayout>
+
+<LinearLayout
+android:id="@+id/linearLayout7"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_margin="5dp"
+android:orientation="horizontal"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
+
+<TextView
+    android:id="@+id/tv_modify_checkbox_condition"
+    android:layout_width="125dp"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:text="@string/positive" />
+
+<CheckBox
+    android:id="@+id/cb_modify_checkBox_condition"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:text="CheckBox" />
+</LinearLayout>
+
+<LinearLayout
+android:id="@+id/linearLayout8"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_margin="5dp"
+android:orientation="horizontal"
+app:layout_constraintTop_toBottomOf="@+id/linearLayout7"
+tools:layout_editor_absoluteX="10dp">
+
+<TextView
+    android:id="@+id/tv_modify_ins_comment"
+    android:layout_width="125dp"
+    android:layout_height="wrap_content"
+    android:text="@string/comment" />
+
+<TextView
+    android:id="@+id/tv_modify_inspection_comment"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:inputType="textPersonName" />
+</LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_delete_inspection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_margin="10dp"
+            android:clickable="true"
+            android:layoutDirection="ltr"
+            app:backgroundTint="#F40F0F"
+            app:srcCompat="@drawable/ic_delete_forever" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_modify_inspection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_margin="10dp"
+            android:clickable="true"
+            app:srcCompat="@drawable/ic_baseline_edit_24" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -63,4 +63,5 @@
     <string name="shearch_id_inspector">Puedes consultarlo en el listado de inspectores una vez te hayas registrado</string>
     <string name="Accept">Aceptar</string>
     <string name="add_brigde">Añadir Puente</string>
+    <string name="modify_inspectio">modify Inspectiom</string>
 </resources>

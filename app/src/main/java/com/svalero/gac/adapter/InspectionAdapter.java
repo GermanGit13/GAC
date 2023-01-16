@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
+import com.svalero.gac.InspectionDetailsActivity;
 import com.svalero.gac.InspectorDetailsActivity;
 import com.svalero.gac.R;
 import com.svalero.gac.db.AppDatabase;
@@ -132,8 +133,7 @@ public class InspectionAdapter extends RecyclerView.Adapter<InspectionAdapter.In
 
             //Para decirle que hace el boton cuando pulsamos sobre el
             // Ver detalles de un inspector
-            //TODO habilitar al terminar la vista detalle
-//            detailsInspectionButton.setOnClickListener(v -> detailsInspectionButton(getAdapterPosition())); //al pulsar lo llevamos al método detailsInspectionButton
+            detailsInspectionButton.setOnClickListener(v -> detailsInspectionButton(getAdapterPosition())); //al pulsar lo llevamos al método detailsInspectionButton
 //            // Modificar un inspector
 //            modifyBrigdeButton.setOnClickListener(v -> modifyBrigdeButton(getAdapterPosition()));
             // Eliminar un inspector
@@ -143,14 +143,13 @@ public class InspectionAdapter extends RecyclerView.Adapter<InspectionAdapter.In
         /**
          * Métodos de los botones del layout que se pinta en el recyclerView
          */
-        //TODO Pendiente crear detalle
-//        private void detailsInspectionButton(int position) {
-//            Inspection inspection = inspectionList.get(position); //recuperamos el puente por su posicion
-//
-//            Intent intent = new Intent(context, InspectionDetailsActivity.class); //Lo pasamos al activity para pintar el detalle de la tarea
-//            intent.putExtra("inspector_id", inspection.getInspection_id()); //Recogemos el id
-//            context.startActivity(intent); //lanzamos el intent que nos lleva al layout correspondiente
-//        }
+        private void detailsInspectionButton(int position) {
+            Inspection inspection = inspectionList.get(position); //recuperamos el puente por su posicion
+
+            Intent intent = new Intent(context, InspectionDetailsActivity.class); //Lo pasamos al activity para pintar el detalle de la tarea
+            intent.putExtra("inspector_id", inspection.getInspection_id()); //Recogemos el id
+            context.startActivity(intent); //lanzamos el intent que nos lleva al layout correspondiente
+        }
 
         private void deleteInspectionButton(int position) {
             /**
