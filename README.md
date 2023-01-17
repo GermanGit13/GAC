@@ -3,6 +3,19 @@
  <p align="left">
    <img src="https://img.shields.io/badge/STATUS-EN%20DESAROLLO-green">
    </p>
+   
+  ## :hammer:Funcionalidades del proyecto
+
+- `Funcionalidad 1`: Registrar Estructuras y ubicarlas en el plano - 
+- `Funcionalidad 1a`: Listar todos los puentes, opción de ver en detalle - 
+- `Funcionalidad 1b`: Modificar y eliminar puentes - 
+- `Funcionalidad 2`: Registrar inspectores de campo - 
+- `Funcionalidad 2a`: Listar todos los inspectores, opción de ver en detalle - 
+- `Funcionalidad 2b`: Modificar y eliminar inspectores - 
+- `Funcionalidad 3`: Registrar inspecciones asociadas al puente desde el listado general de puentes - 
+- `Funcionalidad 3`: Realizar foto del daño al crear una inspección -
+- `Funcionalidad 3a`: Listar todas las inspecciones, opción de ver en detalle - 
+- `Funcionalidad 3b`: Modificar y eliminar inspecciones - 
 
 La aplicación que he realizado, es una app móvil para la gestión de inspecciones en puentes.
 El nombre para esta aplicación será GAC (Gestión Activa de Construcciones).
