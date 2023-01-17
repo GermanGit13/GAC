@@ -1,5 +1,9 @@
 <h1 align="center"> Gestión Activa de Construcciones </h1>
 
+ <p align="left">
+   <img src="https://img.shields.io/badge/STATUS-EN%20DESAROLLO-green">
+   </p>
+
 La aplicación que he realizado, es una app móvil para la gestión de inspecciones en puentes.
 El nombre para esta aplicación será GAC (Gestión Activa de Construcciones).
 
