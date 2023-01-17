@@ -82,9 +82,7 @@ public class InspectionRegisterActivity extends AppCompatActivity {
      * @param view
      */
     public void saveButtonInspection(View view){
-
         //recogemos los datos de las cajas de texto del layout
-
         EditText etInspectionId = findViewById(R.id.et_inspection_inspector_id); //Clave Primaria de Inspector
         CheckBox cbVain = (CheckBox) findViewById(R.id.cb_checkBox_vain);
         CheckBox cbStape = (CheckBox) findViewById(R.id.cb_checkBox_stapes);
@@ -259,10 +257,10 @@ public class InspectionRegisterActivity extends AppCompatActivity {
             builder.setPositiveButton(R.string.Accept, null);
             AlertDialog dialog = builder.create();
             dialog.show();
-//                .setNegativeButton(R.string.not, (dialog, id) -> dialog.dismiss()); //Botones del dialogo que salta
-//        Intent intent = new Intent(this, InspectorDetailsActivity.class); //Lo devuelvo al details del inspector
-//        this.startActivity(intent); //lanzamos el intent que nos lleva al layout correspondiente
-//        AlertDialog dialog = builder.create();
-//        dialog.show();//Importante para que se muestre
+//            .setNegativeButton(R.string.not, (dialog, id) -> dialog.dismiss()); //Botones del dialogo que salta
+//            Intent intent = new Intent(this, InspectorAllActivity.class); //Lo devuelvo al details del inspector
+//            this.startActivity(intent); //lanzamos el intent que nos lleva al layout correspondiente
+//            AlertDialog dialog = builder.create();
+//            dialog.show();//Importante para que se muestre
     }
 }

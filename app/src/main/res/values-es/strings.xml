@@ -63,5 +63,8 @@
     <string name="shearch_id_inspector">Puedes consultarlo en el listado de inspectores una vez te hayas registrado</string>
     <string name="Accept">Aceptar</string>
     <string name="add_brigde">Añadir Puente</string>
-    <string name="modify_inspectio">modify Inspectiom</string>
+    <string name="modify_inspectio">Modificar Inspeccion</string>
+    <string name="not_modify_bridge_and_inspector">No está permitido modificar el puente y el inspector de la inspeccion</string>
+    <string name="modication_notice">Aviso de modificación</string>
+    <string name="modify_inspection">Modify Inspection</string>
 </resources>

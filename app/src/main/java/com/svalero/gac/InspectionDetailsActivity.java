@@ -86,8 +86,7 @@ public class InspectionDetailsActivity extends AppCompatActivity {
                         final AppDatabase dbD = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME) //Instanciamos la BBDD -< PAsamos el contexto para saber donde estamos
                                 .allowMainThreadQueries().build();
 
-                        //TODO cambiar a la activity de modificar
-                        intent.set(new Intent(this, InspectorAllActivity.class)); //Lo pasamos al activity para pintar el detalle de la tarea
+                        intent.set(new Intent(this, InspectionModifyActivity.class)); //Lo pasamos al activity para pintar el detalle de la tarea
                         intent.get().putExtra("inspection_id", inspection.getInspection_id()); //Recogemos el id
                         this.startActivity(intent.get()); //lanzamos el intent que nos lleva al layout correspondiente
 
