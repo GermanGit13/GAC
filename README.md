@@ -1,4 +1,4 @@
-<em> GAC -> Gestión Activa de Construcciones </em>
+<h1 align="center"> Gestión Activa de Construcciones </h1>
 
 La aplicación que he realizado, es una app móvil para la gestión de inspecciones en puentes.
 El nombre para esta aplicación será GAC (Gestión Activa de Construcciones).
