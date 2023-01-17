@@ -147,7 +147,7 @@ public class InspectionAdapter extends RecyclerView.Adapter<InspectionAdapter.In
             Inspection inspection = inspectionList.get(position); //recuperamos el puente por su posicion
 
             Intent intent = new Intent(context, InspectionDetailsActivity.class); //Lo pasamos al activity para pintar el detalle de la tarea
-            intent.putExtra("inspector_id", inspection.getInspection_id()); //Recogemos el id
+            intent.putExtra("inspection_id", inspection.getInspection_id()); //Recogemos el id
             context.startActivity(intent); //lanzamos el intent que nos lleva al layout correspondiente
         }
 

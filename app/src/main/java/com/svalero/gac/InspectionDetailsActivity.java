@@ -29,7 +29,9 @@ public class InspectionDetailsActivity extends AppCompatActivity {
 
     FloatingActionButton fabDelete; //Para borrar desde la vista detalle
     FloatingActionButton fabModify; //Para modificar desde la vista detalle
-    Brigde brigde;
+    private long bridgeId;
+    private long inspectorId;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +49,10 @@ public class InspectionDetailsActivity extends AppCompatActivity {
         final AppDatabase db = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME)
                 .allowMainThreadQueries().build();
         Inspection inspection = db.inspectionDao().getById(inspection_id); //creamos la inspeccion por su id
-        brigde = db.brigdeDao().getById(inspection.bridgeInspId);
-        fillData(inspection, brigde); //Rellenamos los campos con el método creado
+        bridgeId = inspection.getBridgeInspId();
+        inspectorId = inspection.getInspectorCreatorId();
+
+        fillData(inspection); //Rellenamos los campos con el método creado
 
         //Método onClick para borrar
         fabDelete.setOnClickListener((view -> {
@@ -70,44 +74,51 @@ public class InspectionDetailsActivity extends AppCompatActivity {
             dialog.show();//Importante para que se muestre
         }));
 
-//        //Método onClick para modificar
-//        fabModify.setOnClickListener((view -> {
-//            /**
-//             * Dialogo para pregunta antes de si quiere modificar -> https://developer.android.com/guide/topics/ui/dialogs?hl=es-419
-//             */
-//            AlertDialog.Builder builder = new AlertDialog.Builder(this); //le pasamos el contexto donde estamos
-//            builder.setMessage(R.string.do_you_want_to_modify)
-//                    .setTitle(R.string.modify_inspectio)
-//                    .setPositiveButton(R.string.yes, (dialog, id) -> { //Añadimos los botones
-//                        final AppDatabase dbD = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME) //Instanciamos la BBDD -< PAsamos el contexto para saber donde estamos
-//                                .allowMainThreadQueries().build();
-//
-//                        intent.set(new Intent(this, InspectionModifyActivity.class)); //Lo pasamos al activity para pintar el detalle de la tarea
-//                        intent.get().putExtra("inspector_id", inspection.getInspection_id()); //Recogemos el id
-//                        this.startActivity(intent.get()); //lanzamos el intent que nos lleva al layout correspondiente
-//
-//                    })
-//                    .setNegativeButton(R.string.not, (dialog, id) -> dialog.dismiss()); //Botones del dialogo que salta
-//            AlertDialog dialog = builder.create();
-//            dialog.show();//Importante para que se muestre
-//        }));
+        //Método onClick para modificar
+        fabModify.setOnClickListener((view -> {
+            /**
+             * Dialogo para pregunta antes de si quiere modificar -> https://developer.android.com/guide/topics/ui/dialogs?hl=es-419
+             */
+            AlertDialog.Builder builder = new AlertDialog.Builder(this); //le pasamos el contexto donde estamos
+            builder.setMessage(R.string.do_you_want_to_modify)
+                    .setTitle(R.string.modify_inspectio)
+                    .setPositiveButton(R.string.yes, (dialog, id) -> { //Añadimos los botones
+                        final AppDatabase dbD = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME) //Instanciamos la BBDD -< PAsamos el contexto para saber donde estamos
+                                .allowMainThreadQueries().build();
+
+                        //TODO cambiar a la activity de modificar
+                        intent.set(new Intent(this, InspectorAllActivity.class)); //Lo pasamos al activity para pintar el detalle de la tarea
+                        intent.get().putExtra("inspection_id", inspection.getInspection_id()); //Recogemos el id
+                        this.startActivity(intent.get()); //lanzamos el intent que nos lleva al layout correspondiente
+
+                    })
+                    .setNegativeButton(R.string.not, (dialog, id) -> dialog.dismiss()); //Botones del dialogo que salta
+            AlertDialog dialog = builder.create();
+            dialog.show();//Importante para que se muestre
+        }));
     }
 
-    private void fillData(Inspection inspection, Brigde brigde) {
-        TextView tvBridge = findViewById(R.id.tv_modify_inspection_brige_id);
-        TextView tvInspector = findViewById(R.id.tv_modify_brige_id_add_inspection);
-        CheckBox cbVain = findViewById(R.id.cb_modify_checkBox_vain);
-        CheckBox cbStape = findViewById(R.id.cb_modify_checkBox_stapes);
-        TextView tcDamage = findViewById(R.id.tv_modify_inspection_damage);
-        CheckBox cbPlatform = findViewById(R.id.cb_modify_checkBox_platform);
-        CheckBox cbCondition = findViewById(R.id.cb_modify_checkBox_condition);
-        TextView tvComment = findViewById(R.id.tv_modify_inspection_comment);
+    private void fillData(Inspection inspection) {
+        //Instanciamos la BBDD para traernos el nombre del puente por el id que sacamos del objeto inspeccion
+        final AppDatabase db = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME)
+                .allowMainThreadQueries().build();
+        Brigde bridge = db.brigdeDao().getById(bridgeId); //Para obtener el puente asociado
+        Inspector inspector = db.inspectorDao().getById(inspectorId); // para obtener el inspector asociado
 
-        tvBridge.setText(brigde.getName());
-        tvInspector.setText(Math.toIntExact(inspection.getInspectorCreatorId()));
+        TextView tvBridge = findViewById(R.id.tv_details_brige_id_add_inspection);
+        TextView tvInspector = findViewById(R.id.tv_details_inspection_inspector_id);
+        CheckBox cbVain = findViewById(R.id.cb_details_checkBox_vain);
+        CheckBox cbStape = findViewById(R.id.cb_details_checkBox_stapes);
+        TextView tcDamage = findViewById(R.id.tv_details_inspection_damage);
+        CheckBox cbPlatform = findViewById(R.id.cb_details_checkBox_platform);
+        CheckBox cbCondition = findViewById(R.id.cb_details_checkBox_condition);
+        TextView tvComment = findViewById(R.id.tv_details_inspection_comment);
+
+        tvBridge.setText(bridge.getName());
+        tvInspector.setText(inspector.getName());
         cbVain.setChecked(inspection.isVain());
         cbStape.setChecked(inspection.isStapes());
-        tcDamage.setText(inspection.getDamage());
+        tcDamage.setText(String.valueOf(inspection.getDamage()));
         cbPlatform.setChecked(inspection.isPlatformIns());
         cbCondition.setChecked(inspection.isCondition());
         tvComment.setText(inspection.getComment());
