@@ -88,7 +88,7 @@ public class InspectionModifyActivity extends AppCompatActivity {
         TextView tvComment = findViewById(R.id.et_modify_inspection_comment);
 
         long bridgeIdMo = bridgeId; //recuperamos el id porque no permitimos borrar
-        long inspectorId = inspectionId;
+        long inspectorIdMo = inspectorId;
         boolean vain = cbVain.isChecked();
         boolean stape = cbStape.isChecked();
         String damageString = tcDamage.getText().toString();
@@ -97,7 +97,7 @@ public class InspectionModifyActivity extends AppCompatActivity {
         boolean condition = cbCondition.isChecked();
         String comment = tvComment.getText().toString();
 
-        Inspection inspection = new Inspection(bridgeIdMo, inspectorId, vain, stape, damage, platform, condition, comment); //Creamos un inspector con los datos, le pasamos el id para que sea modificar
+        Inspection inspection = new Inspection(inspectionId, inspectorIdMo, bridgeIdMo, vain, stape, damage, platform, condition, comment); //Creamos un inspector con los datos, le pasamos el id para que sea modificar
         final AppDatabase db = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME) //Instanciamos la BBDD, la creamos cada vez que necesitemos meter algo en BBDD
                 .allowMainThreadQueries().build();
 

@@ -56,6 +56,18 @@ public class Inspection {
         this.Comment = comment;
     }
 
+    public Inspection(long inspection_id, long inspectorCreatorId, long bridgeInspId, boolean vain, boolean stapes, int damage, boolean platformIns, boolean condition, String comment) {
+        this.inspection_id = inspection_id;
+        this.inspectorCreatorId = inspectorCreatorId;
+        this.bridgeInspId = bridgeInspId;
+        this.vain = vain;
+        this.stapes = stapes;
+        this.damage = damage;
+        this.platformIns = platformIns;
+        this.condition = condition;
+        this.Comment = comment;
+    }
+
     public Inspection(long inspectorCreatorId, long bridgeInspId, boolean vain, boolean stapes, int damage, boolean platformIns, boolean condition, String comment, String imagePath) {
         this.inspectorCreatorId = inspectorCreatorId;
         this.bridgeInspId = bridgeInspId;
