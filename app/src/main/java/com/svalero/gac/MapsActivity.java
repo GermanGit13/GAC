@@ -8,10 +8,16 @@ import androidx.room.Room;
 
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.location.Location;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mapbox.geojson.Point;
 import com.mapbox.maps.CameraOptions;
 import com.mapbox.maps.MapView;
@@ -30,6 +36,8 @@ public class MapsActivity extends AppCompatActivity {
 
     private MapView mapView;
     private PointAnnotationManager pointAnnotationManager;
+    private FloatingActionButton btLotacion;
+    private FusedLocationProviderClient fusedLocationClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +46,8 @@ public class MapsActivity extends AppCompatActivity {
 
         mapView = findViewById(R.id.mapView); //cargamos el mapa
         initializePointManager(); // inicializamos el pointmanager
+//        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+
 
         /**
          * No traemos todas los puentes que hay para pintar todas en un mapa
@@ -97,6 +107,24 @@ public class MapsActivity extends AppCompatActivity {
                 .build();
         mapView.getMapboxMap().setCamera(cameraPosition);
     }
+
+    /**
+     * Para ubicar al usuario en el mapa
+     */
+//    private void locationUser() {
+//        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+//
+//        btLotacion =(FloatingActionButton) findViewById(R.id.btLocation);
+//        btLotacion.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if (mapView !=null) {
+//                    Location lastLocation = fusedLocationClient.getLastLocation();
+//
+//                }
+//            }
+//        });
+//    }
 
     /**
      * PAra crear el menu (el actionBar)
