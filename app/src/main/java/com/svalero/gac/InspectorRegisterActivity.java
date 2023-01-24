@@ -75,8 +75,6 @@ public class InspectorRegisterActivity extends AppCompatActivity {
         onBackPressed(); //Volver atrás
     }
 
-
-
     /**
      * PAra crear el menu (el actionBar)
      * @param menu

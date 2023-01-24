@@ -134,9 +134,6 @@ public class InspectionModifyActivity extends AppCompatActivity {
         onBackPressed(); //Volver atrás
     }
 
-
-
-
     private void noticeModify() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.modication_notice);

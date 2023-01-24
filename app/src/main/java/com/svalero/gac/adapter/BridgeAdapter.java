@@ -99,7 +99,6 @@ public class BridgeAdapter extends RecyclerView.Adapter<BridgeAdapter.BrigdeHold
 
         public View parentView; //vista padre - como el recyclerView
 
-
         /**
          * 5) Consturctor del Holder
          *

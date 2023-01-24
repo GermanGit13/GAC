@@ -36,7 +36,6 @@ public class BrigdeDetailsActivity extends AppCompatActivity {
         fabDelete = findViewById(R.id.fab_delete);
         fabModify = findViewById(R.id.fab_modify);
 
-
         AtomicReference<Intent> intent = new AtomicReference<>(getIntent());
         //Recuperar el puente por el id
         long brigde_id = getIntent().getLongExtra("brigde_id", 0);
