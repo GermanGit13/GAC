@@ -62,4 +62,8 @@
     <string name="register_inspection_with_id">To register an inspection you need your ID</string>
     <string name="shearch_id_inspector">You can consult it in the list of inspectors once you have registered.</string>
     <string name="Accept">Accept</string>
+    <string name="modify_inspectio">modify Inspection</string>
+    <string name="not_modify_bridge_and_inspector">Modification of the bridge and the inspection inspector is not allowed</string>
+    <string name="modication_notice">Modification notice</string>
+    <string name="modify_inspection">Modify Inspection</string>
 </resources>

@@ -47,6 +47,7 @@ public class BrigdeModifyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_brigde_modify);
 
         brigdeMapModify = findViewById(R.id.brigdeMapModify); //le pasamos el mapa creado en el layout activity_register_brigde y lo metemos en el constrait de abajo
+        initializePointManager();// Para que se cree nada más arrancar
 
         Intent intent = new Intent(getIntent());
         brigdeId = getIntent().getLongExtra("brigde_id", 0); //guardamos el id que nos traemos de la vista detalle
@@ -57,7 +58,7 @@ public class BrigdeModifyActivity extends AppCompatActivity {
         Brigde brigde = db.brigdeDao().getById(brigdeId); //creamos el puente por su id
         fillData(brigde); //rellenamos los datos con el método
 
-//        addMarker(Point.fromLngLat(brigde.getLongitude(), brigde.getLatitude())); //le pasamos el metodo que crea el marker y ponemos el point y nombre del puente
+        addMarker(Point.fromLngLat(brigde.getLongitude(), brigde.getLatitude())); //le pasamos el metodo que crea el marker y ponemos el point y nombre del puente
         setCameraPosition(Point.fromLngLat(brigde.getLongitude(), brigde.getLatitude())); //Fijamos la camara del mapa en el puente a modificar
 
         GesturesPlugin gesturesPlugin = GesturesUtils.getGestures(brigdeMapModify);
@@ -67,8 +68,6 @@ public class BrigdeModifyActivity extends AppCompatActivity {
             addMarker(point);
             return true;
         });
-
-        initializePointManager();// Para que se cree nada más arrancar
     }
 
     /**

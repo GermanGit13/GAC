@@ -135,7 +135,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_delete_inspector"
+            android:id="@+id/fab_delete_inspection"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
@@ -146,7 +146,7 @@
             app:srcCompat="@drawable/ic_delete_forever" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_modify_inspector"
+            android:id="@+id/fab_modify_inspection"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
