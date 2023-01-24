@@ -135,7 +135,6 @@ public class BrigdeModifyActivity extends AppCompatActivity {
         onBackPressed(); //Volver atrás
     }
 
-
     private void fillData(Brigde brigde) {
         EditText etName = findViewById(R.id.brige_modify_text_name);
         EditText etCountry = findViewById(R.id.brige_modify_text_country);

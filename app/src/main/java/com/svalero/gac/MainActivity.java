@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
     Button listInspection;
     Button addInspection;
 
-
     /**
      * Método onCreate: mínimo obligatorio, primer método que una activity arranca por primera vez.
      * Método onResume: Para que la activity vuelva de segundo plano del onCreate. No duplicar código entre amas

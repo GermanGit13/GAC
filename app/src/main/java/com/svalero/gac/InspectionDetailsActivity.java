@@ -32,7 +32,6 @@ public class InspectionDetailsActivity extends AppCompatActivity {
     private long bridgeId;
     private long inspectorId;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
